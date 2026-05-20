@@ -1,6 +1,0 @@
-A demo video is prepared but as its size is over 100 MB, it could not be committed to the repository.
-
-The video is kept is a Google drive. 
-
-Google drive link: https://drive.google.com/drive/folders/1j9sKxq9F1LlT2RFFzz5qdT3-pOkpnKB6?usp=sharing
-Video file link: https://drive.google.com/file/d/1m638Jfsv1kvvbaQaw6ZjcmSpwGBMZ75m/view?usp=sharing

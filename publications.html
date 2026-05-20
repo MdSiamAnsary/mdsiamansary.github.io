@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hi! This is Ansary — Publications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* ── TABS ── */
+.pub-tabs {
+  display:flex; border-bottom:1px solid var(--border); margin-bottom:2.5rem; gap:0;
+}
+.pub-tab {
+  padding:.65rem 1.7rem; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); cursor:pointer; border-bottom:2px solid transparent;
+  transition:all .25s; margin-bottom:-1px; background:none;
+  border-top:none; border-left:none; border-right:none; font-family:var(--sans);
+}
+.pub-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+.pub-tab:hover  { color:var(--text); }
+.pub-count { font-size:.6rem; opacity:.45; margin-left:.3rem; }
+.pub-section { display:none; }
+.pub-section.active { display:block; }
+
+/* ── PUB ITEM ── */
+.pub-list { display:flex; flex-direction:column; gap:1rem; }
+.pub-item {
+  background:var(--bg2); border:1px solid var(--border); border-radius:2px;
+  padding:1.6rem 1.8rem;
+  display:grid; grid-template-columns:32px 1fr auto; gap:1.2rem; align-items:start;
+  transition:border-color .25s, background .25s;
+}
+.pub-item:hover { border-color:rgba(200,169,110,.4); background:rgba(200,169,110,.02); }
+.pub-num { font-family:var(--serif); font-size:1.3rem; color:var(--accent); opacity:.3; line-height:1; padding-top:.2rem; }
+.pub-body {}
+.pub-meta { font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:.4rem; display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; }
+.pub-year { display:inline-block; font-size:.58rem; padding:.1rem .42rem; background:rgba(200,169,110,.1); border:1px solid rgba(200,169,110,.22); color:var(--accent); border-radius:1px; }
+.pub-title { font-family:var(--serif); font-size:1rem; font-weight:700; line-height:1.42; margin-bottom:.4rem; color:var(--text); }
+.pub-venue { font-size:.79rem; color:var(--muted); }
+.pub-actions { display:flex; flex-direction:column; gap:.5rem; flex-shrink:0; align-self:start; }
+.pub-btn {
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.38rem .85rem; border:1px solid var(--border); border-radius:2px;
+  font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  text-decoration:none; transition:all .25s; white-space:nowrap;
+}
+.pub-btn-paper { color:var(--accent); }
+.pub-btn-paper:hover { border-color:var(--accent); background:rgba(200,169,110,.08); }
+.pub-btn-github { color:var(--muted); }
+.pub-btn-github:hover { border-color:var(--muted); color:var(--text); }
+.pub-btn svg { width:9px; height:9px; }
+
+/* ── ICON SVGs ── */
+.icon-ext { display:inline-block; }
+
+@media(max-width:700px){
+  .pub-item { grid-template-columns:24px 1fr; }
+  .pub-actions { flex-direction:row; grid-column:1/-1; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow fade-up d1">Scholarly Work</p>
+  <h1 class="fade-up d2"><em>Publications</em></h1>
+  <p class="fade-up d3">7 journal articles and 9 conference proceedings — each linked to the paper and, where available, the GitHub repository.</p>
+</div>
+
+<section class="section">
+
+  <!-- TABS -->
+  <div class="pub-tabs">
+    <button class="pub-tab active" onclick="switchTab('journals',this)">Journal Articles<span class="pub-count">7</span></button>
+    <button class="pub-tab"        onclick="switchTab('conferences',this)">Conference Proceedings<span class="pub-count">9</span></button>
+  </div>
+
+  <!-- ════════════ JOURNALS ════════════ -->
+  <div class="pub-section active" id="journals">
+    <div class="pub-list">
+
+      <!-- J1 -->
+      <div class="pub-item">
+        <span class="pub-num">1</span>
+        <div class="pub-body">
+          <div class="pub-meta">Shock and Vibration · Wiley<span class="pub-year">2026</span></div>
+          <h3 class="pub-title">Transfer Learning With CLIP for Intelligent Concrete Crack Detection in Structural Health Monitoring</h3>
+          <p class="pub-venue">Wiley Online Library</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://onlinelibrary.wiley.com/doi/10.1155/vib/4194403" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+      <!-- J2 -->
+      <div class="pub-item">
+        <span class="pub-num">2</span>
+        <div class="pub-body">
+          <div class="pub-meta">ENP Engineering Science Journal<span class="pub-year">2026</span></div>
+          <h3 class="pub-title">Food Freshness Evaluation Using a CLIP-Based Architecture</h3>
+          <p class="pub-venue">Ecole Nationale Polytechnique, Algeria</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://enpesj.enp.edu.dz/index.php/enpesj/article/view/344" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+      <!-- J3 -->
+      <div class="pub-item">
+        <span class="pub-num">3</span>
+        <div class="pub-body">
+          <div class="pub-meta">European Journal of EE &amp; Computer Science<span class="pub-year">2025</span></div>
+          <h3 class="pub-title">Structural Damage Detection in Civil Infrastructures</h3>
+          <p class="pub-venue">European Open Science</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://www.ejece.org/index.php/ejece/article/view/758" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+      <!-- J4 -->
+      <div class="pub-item">
+        <span class="pub-num">4</span>
+        <div class="pub-body">
+          <div class="pub-meta">European Journal of EE &amp; Computer Science<span class="pub-year">2025</span></div>
+          <h3 class="pub-title">Prediction of Profitable Stock using Candlestick Patterns with ML</h3>
+          <p class="pub-venue">European Open Science</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://www.ejece.org/index.php/ejece/article/view/738" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+          <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Profitable-Stock-using-Candlestick-Patterns" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 .5A5.5 5.5 0 0 0 .5 6c0 2.43 1.57 4.49 3.75 5.22.27.05.37-.12.37-.26v-.92c-1.52.33-1.84-.74-1.84-.74-.25-.63-.61-.8-.61-.8-.5-.34.04-.33.04-.33.55.04.84.57.84.57.49.84 1.28.6 1.59.46.05-.36.19-.6.35-.74-1.21-.14-2.49-.61-2.49-2.7 0-.6.21-1.08.56-1.47-.06-.14-.24-.7.05-1.45 0 0 .46-.15 1.5.56a5.2 5.2 0 0 1 2.74 0c1.04-.7 1.5-.56 1.5-.56.29.76.11 1.31.05 1.45.35.39.56.88.56 1.47 0 2.1-1.28 2.56-2.5 2.69.2.17.37.5.37 1.01v1.5c0 .14.1.31.38.26A5.5 5.5 0 0 0 11.5 6 5.5 5.5 0 0 0 6 .5z"/></svg>GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- J5 -->
+      <div class="pub-item">
+        <span class="pub-num">5</span>
+        <div class="pub-body">
+          <div class="pub-meta">International Journal of Computer Applications<span class="pub-year">2025</span></div>
+          <h3 class="pub-title">Machine Learning-based Detection of Spear Phishing Emails</h3>
+          <p class="pub-venue">Foundation of Computer Science (FCS), NY, USA</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://www.ijcaonline.org/archives/volume187/number24/ansary-2025-ijca-925421.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+          <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 .5A5.5 5.5 0 0 0 .5 6c0 2.43 1.57 4.49 3.75 5.22.27.05.37-.12.37-.26v-.92c-1.52.33-1.84-.74-1.84-.74-.25-.63-.61-.8-.61-.8-.5-.34.04-.33.04-.33.55.04.84.57.84.57.49.84 1.28.6 1.59.46.05-.36.19-.6.35-.74-1.21-.14-2.49-.61-2.49-2.7 0-.6.21-1.08.56-1.47-.06-.14-.24-.7.05-1.45 0 0 .46-.15 1.5.56a5.2 5.2 0 0 1 2.74 0c1.04-.7 1.5-.56 1.5-.56.29.76.11 1.31.05 1.45.35.39.56.88.56 1.47 0 2.1-1.28 2.56-2.5 2.69.2.17.37.5.37 1.01v1.5c0 .14.1.31.38.26A5.5 5.5 0 0 0 11.5 6 5.5 5.5 0 0 0 6 .5z"/></svg>GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- J6 -->
+      <div class="pub-item">
+        <span class="pub-num">6</span>
+        <div class="pub-body">
+          <div class="pub-meta">ENP Engineering Science Journal · Vol. 3 No. 2<span class="pub-year">2023</span></div>
+          <h3 class="pub-title">Machine Learning for Predicting the Stock Price Direction with Trading Indicators</h3>
+          <p class="pub-venue">Ecole Nationale Polytechnique, Algeria</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://doaj.org/article/498fb5f5f6bb473c9149d52104191bb1" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+          <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 .5A5.5 5.5 0 0 0 .5 6c0 2.43 1.57 4.49 3.75 5.22.27.05.37-.12.37-.26v-.92c-1.52.33-1.84-.74-1.84-.74-.25-.63-.61-.8-.61-.8-.5-.34.04-.33.04-.33.55.04.84.57.84.57.49.84 1.28.6 1.59.46.05-.36.19-.6.35-.74-1.21-.14-2.49-.61-2.49-2.7 0-.6.21-1.08.56-1.47-.06-.14-.24-.7.05-1.45 0 0 .46-.15 1.5.56a5.2 5.2 0 0 1 2.74 0c1.04-.7 1.5-.56 1.5-.56.29.76.11 1.31.05 1.45.35.39.56.88.56 1.47 0 2.1-1.28 2.56-2.5 2.69.2.17.37.5.37 1.01v1.5c0 .14.1.31.38.26A5.5 5.5 0 0 0 11.5 6 5.5 5.5 0 0 0 6 .5z"/></svg>GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- J7 -->
+      <div class="pub-item">
+        <span class="pub-num">7</span>
+        <div class="pub-body">
+          <div class="pub-meta">ENP Engineering Science Journal · Vol. 2 No. 2<span class="pub-year">2022</span></div>
+          <h3 class="pub-title">Breakout Stocks Identification using Machine Learning Approaches</h3>
+          <p class="pub-venue">Ecole Nationale Polytechnique, Algeria</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://doaj.org/article/c7f950f3e623469f94047e57a4f8a013" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+          <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Breakout-Stocks-Identification-using-ML" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 .5A5.5 5.5 0 0 0 .5 6c0 2.43 1.57 4.49 3.75 5.22.27.05.37-.12.37-.26v-.92c-1.52.33-1.84-.74-1.84-.74-.25-.63-.61-.8-.61-.8-.5-.34.04-.33.04-.33.55.04.84.57.84.57.49.84 1.28.6 1.59.46.05-.36.19-.6.35-.74-1.21-.14-2.49-.61-2.49-2.7 0-.6.21-1.08.56-1.47-.06-.14-.24-.7.05-1.45 0 0 .46-.15 1.5.56a5.2 5.2 0 0 1 2.74 0c1.04-.7 1.5-.56 1.5-.56.29.76.11 1.31.05 1.45.35.39.56.88.56 1.47 0 2.1-1.28 2.56-2.5 2.69.2.17.37.5.37 1.01v1.5c0 .14.1.31.38.26A5.5 5.5 0 0 0 11.5 6 5.5 5.5 0 0 0 6 .5z"/></svg>GitHub
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end journals -->
+
+  <!-- ════════════ CONFERENCES ════════════ -->
+  <div class="pub-section" id="conferences">
+    <div class="pub-list">
+
+      <!-- C1 -->
+      <div class="pub-item">
+        <span class="pub-num">1</span>
+        <div class="pub-body">
+          <div class="pub-meta">IEEE RAAICON 2025<span class="pub-year">2025</span></div>
+          <h3 class="pub-title">Stacking Ensemble Approach for AI Generated Text Detection with Appropriate Feature Selection</h3>
+          <p class="pub-venue">IEEE 4th International Conference on Robotics, Automation, AI and IoT</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/11502163" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+      <!-- C2 -->
+      <div class="pub-item">
+        <span class="pub-num">2</span>
+        <div class="pub-body">
+          <div class="pub-meta">IEEE RAAICON 2025<span class="pub-year">2025</span></div>
+          <h3 class="pub-title">MISTY: Multidimensional Identification of Synthetic Text Yield</h3>
+          <p class="pub-venue">IEEE 4th International Conference on Robotics, Automation, AI and IoT</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/abstract/document/11504262/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+      <!-- C3 -->
+      <div class="pub-item">
+        <span class="pub-num">3</span>
+        <div class="pub-body">
+          <div class="pub-meta">IEEE COMPAS 2025<span class="pub-year">2025</span></div>
+          <h3 class="pub-title">Calorie Estimation using Ensemble Technique from Recipes of Bangladeshi Foods</h3>
+          <p class="pub-venue">IEEE 2nd International Conference on Computing, Applications and Systems</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/11381855" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+          <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Calorie-Prediction/tree/main" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 .5A5.5 5.5 0 0 0 .5 6c0 2.43 1.57 4.49 3.75 5.22.27.05.37-.12.37-.26v-.92c-1.52.33-1.84-.74-1.84-.74-.25-.63-.61-.8-.61-.8-.5-.34.04-.33.04-.33.55.04.84.57.84.57.49.84 1.28.6 1.59.46.05-.36.19-.6.35-.74-1.21-.14-2.49-.61-2.49-2.7 0-.6.21-1.08.56-1.47-.06-.14-.24-.7.05-1.45 0 0 .46-.15 1.5.56a5.2 5.2 0 0 1 2.74 0c1.04-.7 1.5-.56 1.5-.56.29.76.11 1.31.05 1.45.35.39.56.88.56 1.47 0 2.1-1.28 2.56-2.5 2.69.2.17.37.5.37 1.01v1.5c0 .14.1.31.38.26A5.5 5.5 0 0 0 11.5 6 5.5 5.5 0 0 0 6 .5z"/></svg>GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- C4 -->
+      <div class="pub-item">
+        <span class="pub-num">4</span>
+        <div class="pub-body">
+          <div class="pub-meta">IEEE QPAIN 2025<span class="pub-year">2025</span></div>
+          <h3 class="pub-title">A Novel Dataset for Identifying AI Generated Bengali Texts</h3>
+          <p class="pub-venue">International Conference on Quantum Photonics, Artificial Intelligence, and Networking</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/11171930" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+      <!-- C5 -->
+      <div class="pub-item">
+        <span class="pub-num">5</span>
+        <div class="pub-body">
+          <div class="pub-meta">IEEE QPAIN 2025<span class="pub-year">2025</span></div>
+          <h3 class="pub-title">Identification of AI Generated Texts Using an Ensemble Method</h3>
+          <p class="pub-venue">International Conference on Quantum Photonics, Artificial Intelligence, and Networking</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/11171775" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+      <!-- C6 -->
+      <div class="pub-item">
+        <span class="pub-num">6</span>
+        <div class="pub-body">
+          <div class="pub-meta">IEEE BECITHCON 2024<span class="pub-year">2024</span></div>
+          <h3 class="pub-title">A Novel Dataset for Abstractive Summarization of Bengali Health Documents</h3>
+          <p class="pub-venue">IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/10962590" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+      <!-- C7 -->
+      <div class="pub-item">
+        <span class="pub-num">7</span>
+        <div class="pub-body">
+          <div class="pub-meta">IEEE PICC 2023<span class="pub-year">2023</span></div>
+          <h3 class="pub-title">Newspaper Article Summarization Using Combinational Method</h3>
+          <p class="pub-venue">International Conference on Power, Instrumentation, Control and Computing</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/10142440" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+          <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Newspaper-Article-Summarization-Using-Combinational-Method" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 .5A5.5 5.5 0 0 0 .5 6c0 2.43 1.57 4.49 3.75 5.22.27.05.37-.12.37-.26v-.92c-1.52.33-1.84-.74-1.84-.74-.25-.63-.61-.8-.61-.8-.5-.34.04-.33.04-.33.55.04.84.57.84.57.49.84 1.28.6 1.59.46.05-.36.19-.6.35-.74-1.21-.14-2.49-.61-2.49-2.7 0-.6.21-1.08.56-1.47-.06-.14-.24-.7.05-1.45 0 0 .46-.15 1.5.56a5.2 5.2 0 0 1 2.74 0c1.04-.7 1.5-.56 1.5-.56.29.76.11 1.31.05 1.45.35.39.56.88.56 1.47 0 2.1-1.28 2.56-2.5 2.69.2.17.37.5.37 1.01v1.5c0 .14.1.31.38.26A5.5 5.5 0 0 0 11.5 6 5.5 5.5 0 0 0 6 .5z"/></svg>GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- C8 -->
+      <div class="pub-item">
+        <span class="pub-num">8</span>
+        <div class="pub-body">
+          <div class="pub-meta">IEEE WIECON-ECE 2022<span class="pub-year">2022</span></div>
+          <h3 class="pub-title">Prediction of Stock Price Direction with Trading Indicators using Machine Learning Techniques</h3>
+          <p class="pub-venue">IEEE International Women in Engineering Conference on Electrical and Computer Engineering</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/10150983" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+          <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 .5A5.5 5.5 0 0 0 .5 6c0 2.43 1.57 4.49 3.75 5.22.27.05.37-.12.37-.26v-.92c-1.52.33-1.84-.74-1.84-.74-.25-.63-.61-.8-.61-.8-.5-.34.04-.33.04-.33.55.04.84.57.84.57.49.84 1.28.6 1.59.46.05-.36.19-.6.35-.74-1.21-.14-2.49-.61-2.49-2.7 0-.6.21-1.08.56-1.47-.06-.14-.24-.7.05-1.45 0 0 .46-.15 1.5.56a5.2 5.2 0 0 1 2.74 0c1.04-.7 1.5-.56 1.5-.56.29.76.11 1.31.05 1.45.35.39.56.88.56 1.47 0 2.1-1.28 2.56-2.5 2.69.2.17.37.5.37 1.01v1.5c0 .14.1.31.38.26A5.5 5.5 0 0 0 11.5 6 5.5 5.5 0 0 0 6 .5z"/></svg>GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- C9 -->
+      <div class="pub-item">
+        <span class="pub-num">9</span>
+        <div class="pub-body">
+          <div class="pub-meta">ICICT4SD 2021<span class="pub-year">2021</span></div>
+          <h3 class="pub-title">A Hybrid Approach for Automatic Extractive Summarization</h3>
+          <p class="pub-venue">International Conference on ICT for Sustainable Development</p>
+        </div>
+        <div class="pub-actions">
+          <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/abstract/document/9396855" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>Paper
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end conferences -->
+
+</section>
+
+</main>
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.pub-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.pub-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+<script src="partials.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>

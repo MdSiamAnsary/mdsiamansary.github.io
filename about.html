@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hi! This is Ansary — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.about-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:5rem; align-items:start; }
+.about-text p { color:rgba(240,237,232,.72); font-size:1rem; margin-bottom:1.3rem; line-height:1.9; }
+.about-details { display:flex; flex-direction:column; gap:1.1rem; }
+
+/* affiliations */
+.affil-card {
+  padding:1.5rem 1.6rem; background:var(--bg3); border:1px solid var(--border);
+  border-radius:2px; display:flex; gap:1.2rem; align-items:flex-start;
+  transition:border-color .25s;
+}
+.affil-card:hover { border-color:rgba(200,169,110,.4); }
+.affil-dot { width:8px; height:8px; border-radius:50%; background:var(--accent); flex-shrink:0; margin-top:.45rem; }
+.affil-body {}
+.affil-role  { font-family:var(--serif); font-size:1rem; font-weight:700; margin-bottom:.25rem; }
+.affil-place { font-size:.83rem; color:var(--muted); margin-bottom:.3rem; }
+.affil-since { font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+
+/* research interests grid */
+.interests-grid { display:flex; flex-wrap:wrap; gap:.6rem; }
+
+@media(max-width:960px){ .about-grid{ grid-template-columns:1fr; gap:3rem; } }
+</style>
+</head>
+<body>
+<main>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow fade-up d1">Profile</p>
+  <h1 class="fade-up d2">About <em>Me</em></h1>
+  <p class="fade-up d3">Educator, researcher, and lifelong learner at the intersection of language and machines.</p>
+</div>
+
+<!-- BIO + DETAILS -->
+<section class="section">
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am Md. Siam Ansary, an Assistant Professor at the Department of Computer Science and Engineering, Ahsanullah University of Science and Technology (AUST), Dhaka, Bangladesh.</p>
+      <p>I hold a Master in Information Technology (MIT) from the Institute of Information Technology (IIT), University of Dhaka, and a BSc in CSE from AUST — where I graduated with Dean's List of Honor. For my undergraduate thesis and master's project, I worked on Automatic Text Summarization.</p>
+      <p>My current research spans natural language processing, opinion mining, automatic text summarization, stock market analysis, and emerging applications of machine learning in structural health monitoring and food quality assessment.</p>
+    </div>
+    <div class="about-details">
+      <div class="detail-card">
+        <h4>Position</h4>
+        <p>Assistant Professor<br>Dept. of CSE, AUST</p>
+      </div>
+      <div class="detail-card">
+        <h4>Office</h4>
+        <p>Room No. 9B02, AUST<br>141 &amp; 142, Love Road, Tejgaon<br>Dhaka-1208, Bangladesh</p>
+      </div>
+      <div class="detail-card">
+        <h4>Email</h4>
+        <a href="mailto:siamansary.cse@aust.edu">siamansary.cse@aust.edu</a>
+        <a href="mailto:siamansary.cse@gmail.com">siamansary.cse@gmail.com</a>
+        <a href="mailto:siamansary.aust@gmail.com">siamansary.aust@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH INTERESTS -->
+<section class="section section-alt">
+  <p class="section-label">Focus Areas</p>
+  <h2 class="section-title">Research Interests</h2>
+  <div class="interests-grid">
+    <span class="tag tag-accent">Natural Language Processing</span>
+    <span class="tag tag-accent">Opinion Mining</span>
+    <span class="tag tag-accent">Stock Market Analysis</span>
+    <span class="tag tag-accent">Automatic Text Summarization</span>
+    <span class="tag tag-accent">Machine Learning</span>
+    <span class="tag tag-accent">CLIP-Based Vision-Language Models</span>
+    <span class="tag tag-accent">Structural Health Monitoring</span>
+    <span class="tag tag-accent">AI-Generated Text Detection</span>
+    <span class="tag tag-accent">Food Quality Assessment</span>
+    <span class="tag tag-accent">Cyber Security</span>
+  </div>
+</section>
+
+<!-- AFFILIATIONS -->
+<section class="section">
+  <p class="section-label">Membership</p>
+  <h2 class="section-title">Professional Affiliations</h2>
+  <div style="display:flex;flex-direction:column;gap:1rem;max-width:680px;">
+
+    <div class="affil-card">
+      <div class="affil-dot"></div>
+      <div class="affil-body">
+        <p class="affil-role">Co-opt Member</p>
+        <p class="affil-place">AUST CSE Society, Ahsanullah University of Science and Technology</p>
+        <span class="affil-since">Since 22 December 2024</span>
+      </div>
+    </div>
+
+    <div class="affil-card">
+      <div class="affil-dot"></div>
+      <div class="affil-body">
+        <p class="affil-role">Full-Time Faculty Member</p>
+        <p class="affil-place">Department of Computer Science and Engineering, AUST</p>
+        <span class="affil-since">Since June 2021</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACADEMIC HONOR -->
+<section class="section section-alt">
+  <p class="section-label">Achievement</p>
+  <h2 class="section-title">Honor</h2>
+  <div style="max-width:500px;">
+    <div style="padding:2rem 2rem;background:var(--bg3);border:1px solid var(--border);border-radius:2px;border-top:3px solid var(--accent);">
+      <p style="font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;">2019 · AUST</p>
+      <p style="font-family:var(--serif);font-size:1.4rem;font-weight:700;margin-bottom:.5rem;">Dean's List of Honor</p>
+      <p style="font-size:.87rem;color:var(--muted);">Awarded for outstanding academic achievement in the BSc CSE program at Ahsanullah University of Science and Technology.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section class="section">
+  <p class="section-label">Online Profiles</p>
+  <h2 class="section-title">Find Me Online</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;">
+    <a href="https://scholar.google.com/citations?user=LvOwTM8AAAAJ&hl=en" target="_blank" rel="noopener" class="detail-card" style="text-decoration:none;display:flex;flex-direction:column;gap:.4rem;">
+      <h4>Google Scholar</h4><p>Citations &amp; h-index →</p>
+    </a>
+    <a href="https://www.scopus.com/authid/detail.uri?authorId=57223033441" target="_blank" rel="noopener" class="detail-card" style="text-decoration:none;display:flex;flex-direction:column;gap:.4rem;">
+      <h4>Scopus</h4><p>ID: 57223033441 →</p>
+    </a>
+    <a href="https://orcid.org/0000-0002-4942-2541" target="_blank" rel="noopener" class="detail-card" style="text-decoration:none;display:flex;flex-direction:column;gap:.4rem;">
+      <h4>ORCID</h4><p>0000-0002-4942-2541 →</p>
+    </a>
+    <a href="https://www.researchgate.net/profile/Md-Siam-Ansary" target="_blank" rel="noopener" class="detail-card" style="text-decoration:none;display:flex;flex-direction:column;gap:.4rem;">
+      <h4>ResearchGate</h4><p>Md-Siam-Ansary →</p>
+    </a>
+    <a href="https://www.linkedin.com/in/md-siam-ansary/" target="_blank" rel="noopener" class="detail-card" style="text-decoration:none;display:flex;flex-direction:column;gap:.4rem;">
+      <h4>LinkedIn</h4><p>md-siam-ansary →</p>
+    </a>
+    <a href="https://github.com/MdSiamAnsary/" target="_blank" rel="noopener" class="detail-card" style="text-decoration:none;display:flex;flex-direction:column;gap:.4rem;">
+      <h4>GitHub</h4><p>MdSiamAnsary →</p>
+    </a>
+    <a href="https://www.aust.edu/cse/faculty_member/mr_md_siam_ansary" target="_blank" rel="noopener" class="detail-card" style="text-decoration:none;display:flex;flex-direction:column;gap:.4rem;">
+      <h4>AUST Profile</h4><p>Official faculty page →</p>
+    </a>
+  </div>
+</section>
+
+</main>
+<script src="partials.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>

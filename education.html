@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hi! This is Ansary — Education</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.edu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+.edu-card {
+  padding:2rem; background:var(--bg3); border:1px solid var(--border); border-radius:2px;
+  position:relative; overflow:hidden; transition:border-color .25s, transform .25s;
+  display:flex; flex-direction:column;
+}
+.edu-card:hover { border-color:var(--accent); transform:translateY(-5px); }
+.edu-card::after { content:''; position:absolute; top:0; right:0; width:70px; height:70px; background:radial-gradient(circle at top right,rgba(200,169,110,.1),transparent 70%); }
+.edu-period { font-size:.66rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); margin-bottom:.55rem; }
+.edu-degree { font-family:var(--serif); font-size:1.1rem; font-weight:700; margin-bottom:.35rem; line-height:1.35; }
+.edu-inst   { font-size:.83rem; color:var(--muted); margin-bottom:1rem; flex:1; }
+.edu-gpa    { font-size:.7rem; display:inline-block; padding:.22rem .6rem; background:rgba(200,169,110,.1); border:1px solid rgba(200,169,110,.25); color:var(--accent); border-radius:1px; }
+</style>
+</head>
+<body>
+<main>
+
+<div class="page-hero">
+  <p class="page-hero-eyebrow fade-up d1">Academic</p>
+  <h1 class="fade-up d2"><em>Education</em></h1>
+  <p class="fade-up d3">A strong academic foundation built at institutions in Dhaka, with consistent top-tier performance throughout.</p>
+</div>
+
+<section class="section">
+  <p class="section-label">Degrees</p>
+  <h2 class="section-title">Academic Background</h2>
+  <div class="edu-grid">
+
+    <div class="edu-card">
+      <p class="edu-period">2020 — 2021</p>
+      <h3 class="edu-degree">Master in Information Technology (MIT)</h3>
+      <p class="edu-inst">Institute of Information Technology (IIT)<br>University of Dhaka</p>
+      <span class="edu-gpa">CGPA 3.85 / 4.00</span>
+    </div>
+
+    <div class="edu-card">
+      <p class="edu-period">2014 — 2019</p>
+      <h3 class="edu-degree">BSc in Computer Science &amp; Engineering</h3>
+      <p class="edu-inst">Ahsanullah University of Science and Technology</p>
+      <span class="edu-gpa">CGPA 3.944 / 4.00 &nbsp;·&nbsp; Dean's List of Honor</span>
+    </div>
+
+    <div class="edu-card">
+      <p class="edu-period">2011 — 2013</p>
+      <h3 class="edu-degree">Higher Secondary Certificate (HSC)</h3>
+      <p class="edu-inst">Notre Dame College, Dhaka</p>
+      <span class="edu-gpa">GPA 5.00 / 5.00</span>
+    </div>
+
+    <div class="edu-card">
+      <p class="edu-period">2009 — 2011</p>
+      <h3 class="edu-degree">Secondary School Certificate (SSC)</h3>
+      <p class="edu-inst">Ideal School and College, Dhaka</p>
+      <span class="edu-gpa">GPA 5.00 / 5.00</span>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-alt">
+  <p class="section-label">Achievement</p>
+  <h2 class="section-title">Academic Honor</h2>
+  <div style="max-width:520px;">
+    <div style="padding:2rem;background:var(--bg3);border:1px solid var(--border);border-radius:2px;border-top:3px solid var(--accent);">
+      <p style="font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;">2019 · AUST</p>
+      <p style="font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:.5rem;">Dean's List of Honor</p>
+      <p style="font-size:.87rem;color:var(--muted);">Awarded for outstanding academic performance in the BSc CSE program at Ahsanullah University of Science and Technology, graduating with a CGPA of 3.944/4.00.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<script src="partials.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hi! This is Ansary — Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* ── POSITIONS TIMELINE ── */
+.timeline { position:relative; padding-left:1.8rem; max-width:700px; }
+.timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--border); }
+.t-item { position:relative; margin-bottom:2.8rem; }
+.t-item::before { content:''; position:absolute; left:-1.8rem; top:.38rem; width:9px; height:9px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(200,169,110,.12); }
+.t-period { font-size:.67rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); margin-bottom:.3rem; }
+.t-role    { font-family:var(--serif); font-size:1.2rem; font-weight:700; margin-bottom:.2rem; }
+.t-org     { font-size:.85rem; color:var(--muted); }
+
+/* ── COURSES SECTION ── */
+.courses-wrapper { display:flex; flex-direction:column; gap:2.5rem; }
+
+.rank-block {}
+.rank-header {
+  display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;
+}
+.rank-badge {
+  font-size:.64rem; letter-spacing:.18em; text-transform:uppercase;
+  color:#0d0d0d; background:var(--accent); padding:.3rem .8rem; border-radius:1px;
+  font-weight:500; white-space:nowrap;
+}
+.rank-header h3 { font-family:var(--serif); font-size:1.2rem; font-weight:700; }
+
+.semesters-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:1rem; }
+
+.sem-card {
+  background:var(--bg3); border:1px solid var(--border); border-radius:2px;
+  overflow:hidden; transition:border-color .25s;
+}
+.sem-card:hover { border-color:rgba(200,169,110,.35); }
+.sem-header {
+  padding:.7rem 1.2rem; background:rgba(200,169,110,.07);
+  border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.sem-title { font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:500; }
+.sem-count { font-size:.62rem; color:var(--muted); }
+.sem-courses { padding:.8rem 0; }
+.course-row {
+  display:flex; align-items:baseline; gap:.8rem;
+  padding:.45rem 1.2rem; transition:background .2s;
+}
+.course-row:hover { background:rgba(200,169,110,.04); }
+.course-code { font-size:.68rem; color:var(--accent); font-weight:500; letter-spacing:.05em; white-space:nowrap; min-width:72px; }
+.course-name { font-size:.82rem; color:rgba(240,237,232,.78); line-height:1.4; }
+
+@media(max-width:960px){ .semesters-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<main>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow fade-up d1">Career</p>
+  <h1 class="fade-up d2"><em>Experience</em></h1>
+  <p class="fade-up d3">Full-time faculty at AUST since 2021 — teaching, mentoring, and researching in Computer Science and Engineering.</p>
+</div>
+
+<!-- POSITIONS -->
+<section class="section">
+  <p class="section-label">Employment</p>
+  <h2 class="section-title">Academic Positions</h2>
+  <div class="timeline">
+    <div class="t-item">
+      <p class="t-period">2025 — Present</p>
+      <h3 class="t-role">Assistant Professor</h3>
+      <p class="t-org">Department of Computer Science &amp; Engineering, AUST</p>
+    </div>
+    <div class="t-item">
+      <p class="t-period">October 2023 — 2025</p>
+      <h3 class="t-role">Lecturer (Grade I)</h3>
+      <p class="t-org">Department of Computer Science &amp; Engineering, AUST</p>
+    </div>
+    <div class="t-item">
+      <p class="t-period">June 2021 — October 2023</p>
+      <h3 class="t-role">Lecturer (Grade II)</h3>
+      <p class="t-org">Department of Computer Science &amp; Engineering, AUST</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING HISTORY -->
+<section class="section section-alt">
+  <p class="section-label">Teaching</p>
+  <h2 class="section-title">Courses Conducted</h2>
+  <div class="courses-wrapper">
+
+    <!-- ─────────── ASSISTANT PROFESSOR ─────────── -->
+    <div class="rank-block">
+      <div class="rank-header">
+        <span class="rank-badge">Assistant Professor</span>
+        <h3>2024 – 2025</h3>
+      </div>
+      <div class="semesters-grid">
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Fall 2024</span>
+            <span class="sem-count">3 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 2103</span><span class="course-name">Data Structures</span></div>
+            <div class="course-row"><span class="course-code">CSE 2104</span><span class="course-name">Data Structures Lab</span></div>
+            <div class="course-row"><span class="course-code">CSE 4100</span><span class="course-name">Project and Thesis-I</span></div>
+          </div>
+        </div>
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Spring 2025</span>
+            <span class="sem-count">2 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 2103</span><span class="course-name">Data Structures</span></div>
+            <div class="course-row"><span class="course-code">CSE 2104</span><span class="course-name">Data Structures Lab</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- end rank -->
+
+    <!-- ─────────── LECTURER GRADE I ─────────── -->
+    <div class="rank-block">
+      <div class="rank-header">
+        <span class="rank-badge">Lecturer (Grade I)</span>
+        <h3>2023 – 2024</h3>
+      </div>
+      <div class="semesters-grid">
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Fall 2023</span>
+            <span class="sem-count">5 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 1232</span><span class="course-name">Numerical Methods &amp; Computer Programming Lab <em style="color:var(--muted);font-size:.75rem;">(BSc CE)</em></span></div>
+            <div class="course-row"><span class="course-code">CSE 2163</span><span class="course-name">Numerical Methods &amp; Computer Programming Lab <em style="color:var(--muted);font-size:.75rem;">(BSc CE)</em></span></div>
+            <div class="course-row"><span class="course-code">CSE 3104</span><span class="course-name">Database Lab</span></div>
+            <div class="course-row"><span class="course-code">CSE 4173</span><span class="course-name">Cyber Security</span></div>
+            <div class="course-row"><span class="course-code">CSE 4174</span><span class="course-name">Cyber Security Lab</span></div>
+          </div>
+        </div>
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Spring 2023</span>
+            <span class="sem-count">4 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 2200</span><span class="course-name">Software Development-III</span></div>
+            <div class="course-row"><span class="course-code">CSE 2163</span><span class="course-name">Numerical Methods &amp; Computer Programming Lab <em style="color:var(--muted);font-size:.75rem;">(BSc CE)</em></span></div>
+            <div class="course-row"><span class="course-code">CSE 4173</span><span class="course-name">Cyber Security</span></div>
+            <div class="course-row"><span class="course-code">CSE 4174</span><span class="course-name">Cyber Security Lab</span></div>
+          </div>
+        </div>
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Spring 2024</span>
+            <span class="sem-count">2 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 3101</span><span class="course-name">Mathematical Analysis for Computer Science</span></div>
+            <div class="course-row"><span class="course-code">CSE 3104</span><span class="course-name">Database Lab</span></div>
+          </div>
+        </div>
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Fall 2024</span>
+            <span class="sem-count">4 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 2214</span><span class="course-name">Assembly Language Programming</span></div>
+            <div class="course-row"><span class="course-code">CSE 3103</span><span class="course-name">Database</span></div>
+            <div class="course-row"><span class="course-code">CSE 3104</span><span class="course-name">Database Lab</span></div>
+            <div class="course-row"><span class="course-code">CSE 3208</span><span class="course-name">Introduction to Artificial Intelligence Lab</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- end rank -->
+
+    <!-- ─────────── LECTURER GRADE II ─────────── -->
+    <div class="rank-block">
+      <div class="rank-header">
+        <span class="rank-badge">Lecturer (Grade II)</span>
+        <h3>2020 – 2022</h3>
+      </div>
+      <div class="semesters-grid">
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Fall 2020</span>
+            <span class="sem-count">3 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 1287</span><span class="course-name">Computer Programming <em style="color:var(--muted);font-size:.75rem;">(BSc IPE)</em></span></div>
+            <div class="course-row"><span class="course-code">CSE 1288</span><span class="course-name">Computer Programming Sessional <em style="color:var(--muted);font-size:.75rem;">(BSc IPE)</em></span></div>
+            <div class="course-row"><span class="course-code">CSE 4108</span><span class="course-name">Artificial Intelligence Lab</span></div>
+          </div>
+        </div>
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Spring 2021</span>
+            <span class="sem-count">4 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 2200</span><span class="course-name">Software Development-III</span></div>
+            <div class="course-row"><span class="course-code">CSE 3100</span><span class="course-name">Software Development-IV</span></div>
+            <div class="course-row"><span class="course-code">CSE 4107</span><span class="course-name">Artificial Intelligence</span></div>
+            <div class="course-row"><span class="course-code">CSE 4108</span><span class="course-name">Artificial Intelligence Lab</span></div>
+          </div>
+        </div>
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Fall 2021</span>
+            <span class="sem-count">3 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 3223</span><span class="course-name">Information System Design and Software Engineering</span></div>
+            <div class="course-row"><span class="course-code">CSE 3224</span><span class="course-name">Information System Design and Software Engineering Lab</span></div>
+            <div class="course-row"><span class="course-code">CSE 4108</span><span class="course-name">Artificial Intelligence Lab</span></div>
+          </div>
+        </div>
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Spring 2022</span>
+            <span class="sem-count">3 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 1287</span><span class="course-name">Computer Programming <em style="color:var(--muted);font-size:.75rem;">(BSc ME)</em></span></div>
+            <div class="course-row"><span class="course-code">CSE 1288</span><span class="course-name">Computer Programming Sessional <em style="color:var(--muted);font-size:.75rem;">(BSc ME)</em></span></div>
+            <div class="course-row"><span class="course-code">CSE 2200</span><span class="course-name">Software Development-III</span></div>
+          </div>
+        </div>
+
+        <div class="sem-card">
+          <div class="sem-header">
+            <span class="sem-title">Fall 2022</span>
+            <span class="sem-count">3 courses</span>
+          </div>
+          <div class="sem-courses">
+            <div class="course-row"><span class="course-code">CSE 3100</span><span class="course-name">Software Development-IV</span></div>
+            <div class="course-row"><span class="course-code">CSE 3201</span><span class="course-name">Introduction to Computer Networks</span></div>
+            <div class="course-row"><span class="course-code">CSE 3202</span><span class="course-name">Introduction to Computer Networks Lab</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- end rank -->
+
+  </div><!-- end courses-wrapper -->
+</section>
+
+</main>
+<script src="partials.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>

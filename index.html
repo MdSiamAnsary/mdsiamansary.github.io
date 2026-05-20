@@ -1,395 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hi! This is Ansary</title>
+<meta name="description" content="Assistant Professor, Dept. of CSE, AUST. Researcher in NLP, Opinion Mining, and Machine Learning."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+#hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 8rem 6rem 5rem; position: relative; overflow: hidden;
+}
+#hero::before {
+  content: ''; position: absolute; top: 10%; right: -15%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(200,169,110,0.055) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.8rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-eyebrow::after { content:''; display:block; height:1px; width:50px; background:var(--accent); opacity:.4; }
+.hero-name { font-family:var(--serif); font-size:clamp(3.5rem,7vw,6rem); line-height:1.05; font-weight:700; margin-bottom:1.5rem; }
+.hero-name em { font-style:italic; color:var(--accent); }
+.hero-tagline { font-size:1.02rem; color:var(--muted); max-width:540px; margin-bottom:2rem; line-height:1.85; }
+.hero-interests { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:3rem; }
+.hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:4rem; }
+.hero-stats { display:flex; gap:3.5rem; flex-wrap:wrap; padding-top:3rem; border-top:1px solid var(--border); }
+.stat-num  { font-family:var(--serif); font-size:2.2rem; font-weight:700; color:var(--accent); display:block; }
+.stat-label { font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
 
-  <title>Md Siam Ansary</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+/* quick-nav cards */
+.quicknav { display:grid; grid-template-columns:repeat(auto-fit, minmax(195px,1fr)); gap:1rem; }
+.qcard {
+  padding:1.8rem; background:var(--bg3); border:1px solid var(--border); border-radius:2px;
+  text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:.55rem;
+  transition:border-color .25s, transform .25s;
+}
+.qcard:hover { border-color:var(--accent); transform:translateY(-4px); }
+.qcard-icon  { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); }
+.qcard-title { font-family:var(--serif); font-size:1.1rem; font-weight:700; }
+.qcard-desc  { font-size:.79rem; color:var(--muted); line-height:1.5; }
+.qcard-arrow { font-size:.8rem; color:var(--accent); opacity:.45; margin-top:auto; padding-top:.5rem; }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon_io/favicon.ico" rel="icon">
-  <link href="assets/img/favicon_io/apple-touch-icon.ico" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
-
-
+@media(max-width:960px){ #hero{ padding:7rem 1.5rem 4rem; } .hero-stats{ gap:2rem; } }
+</style>
 </head>
-
 <body>
+<main>
 
-  <!-- ======= Nav toggle button ======= -->
-  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow fade-up d1">Assistant Professor &nbsp;·&nbsp; CSE, AUST &nbsp;·&nbsp; Dhaka</p>
+  <h1 class="hero-name fade-up d2">Md. <em>Siam</em><br>Ansary</h1>
+  <p class="hero-tagline fade-up d3">Researcher and educator at Ahsanullah University of Science and Technology. Working at the intersection of natural language processing, machine learning, and intelligent systems.</p>
+  <div class="hero-interests fade-up d3">
+    <span class="tag tag-accent">Natural Language Processing</span>
+    <span class="tag tag-accent">Opinion Mining</span>
+    <span class="tag tag-accent">Stock Market Analysis</span>
+    <span class="tag tag-accent">Text Summarization</span>
+    <span class="tag tag-accent">Machine Learning</span>
+  </div>
+  <div class="hero-ctas fade-up d4">
+    <a href="publications.html" class="btn btn-primary">View Publications</a>
+    <a href="contact.html"      class="btn btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-stats fade-up d5">
+    <div><span class="stat-num">16</span><span class="stat-label">Publications</span></div>
+    <div><span class="stat-num">7</span> <span class="stat-label">Journal Articles</span></div>
+    <div><span class="stat-num">9</span> <span class="stat-label">Conference Papers</span></div>
+    <div><span class="stat-num">5+</span><span class="stat-label">Years Teaching</span></div>
+  </div>
+</section>
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
+<!-- QUICK NAV -->
+<section class="section section-alt">
+  <p class="section-label">Explore</p>
+  <h2 class="section-title">Navigate the Site</h2>
+  <div class="quicknav">
+    <a href="about.html" class="qcard">
+      <span class="qcard-icon">Profile</span>
+      <span class="qcard-title">About</span>
+      <span class="qcard-desc">Background, research interests, and professional affiliations.</span>
+      <span class="qcard-arrow">→</span>
+    </a>
+    <a href="experience.html" class="qcard">
+      <span class="qcard-icon">Career</span>
+      <span class="qcard-title">Experience</span>
+      <span class="qcard-desc">Academic positions and full course teaching history since 2020.</span>
+      <span class="qcard-arrow">→</span>
+    </a>
+    <a href="publications.html" class="qcard">
+      <span class="qcard-icon">Research</span>
+      <span class="qcard-title">Publications</span>
+      <span class="qcard-desc">16 papers in journals and IEEE conferences, with paper & GitHub links.</span>
+      <span class="qcard-arrow">→</span>
+    </a>
+    <a href="education.html" class="qcard">
+      <span class="qcard-icon">Academic</span>
+      <span class="qcard-title">Education</span>
+      <span class="qcard-desc">Degrees, institutions, and academic achievements.</span>
+      <span class="qcard-arrow">→</span>
+    </a>
+    <a href="contact.html" class="qcard">
+      <span class="qcard-icon">Connect</span>
+      <span class="qcard-title">Contact</span>
+      <span class="qcard-desc">Reach out via email or find all research profile links.</span>
+      <span class="qcard-arrow">→</span>
+    </a>
+  </div>
+</section>
 
-      <div class="profile">
-        <img src="assets/img/ansary.png" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Md Siam Ansary</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://www.github.com/MdSiamAnsary/" class="github"><i class="bx bxl-github"></i></a>
-          <a href="https://www.linkedin.com/in/md-siam-ansary/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
-
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#researches"><i class="bx bx-server"></i> Research</a></li>
-          <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
-
-        </ul>
-      </nav><!-- .nav-menu -->
-      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
-    </div>
-  </header><!-- End Header -->
-
-
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Hi! I am Md. Siam Ansary.</h2>
-          <p>
-          </p>
-        </div>
-
-        <div class="row">
-         
-
-          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Personal Details</h3>
-            <p class="font-italic">
-            </p>
-            <p style="font-family: Lora; text-align: justify; font-size: 16pt;">
-              Hello! I am Md. Siam Ansary. I have completed Master in Information Technology (MIT) from  
-              <span style="font-style: bold;">
-                <a href="http://www.iit.du.ac.bd/">Institute of Information Technology (IIT)</a>
-              </span>
-              of 
-               <span style="font-style: bold;">
-                <a href="https://www.du.ac.bd/">University of Dhaka</a>
-              </span>
-              and Bachelor of Science in Computer Science and Engineering from 
-              <span style="font-style: bold;">
-                <a href="http://aust.edu/">Ahsanullah University of Science and Technology (AUST)</a>
-              </span>. For my undergrad thesis and masters project work, I worked on Automatic Text Summarization. 
-              Currently, I am working as a Lecturer at the 
-              <span style="font-style: bold;">
-                <a href="https://www.aust.edu/cse/faculty_member/mr_md_siam_ansary">Department of Computer Science and Engineering</a>
-              </span>
-              of AUST since 2021.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Resume</h2>
-          <p></p>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" data-aos="fade-up">
-            <h3 class="resume-title">Employment History</h3>
-
-             <div class="resume-item">
-              <h4>Lecturer (Grade I), Department of CSE, AUST</h4>
-              <h5>October 2023 - Current</h5>
-
-               <ul>
-                <li>Taught Courses:
-                  <ul>
-                    <li> CSE 2163 Numerical Methods & Computer Programming Lab</li>
-                    <li> CSE 2200 Software Development-III</li>
-                    <li> CSE 4173 <a href="https://github.com/MdSiamAnsary/Cyber-Security-Concepts">Cyber Security</a></li>
-                    <li> CSE 4174 Cyber Security Lab</li>
-                  </ul>
-                </li>
-              </ul>
-             
-            </div>
-
-             <div class="resume-item">
-              <h4>Lecturer (Grade II), Department of CSE, AUST</h4>
-              <h5>June 2021 - October 2023</h5>
-
-                <ul>
-                <li>Taught Courses:
-                  <ul>
-                    <li> CSE 1287 Computer Programming</li>
-                    <li> CSE 1288 Computer Programming Sessional</li>
-                    <li> CSE 2200 Software Development-III</li>
-                    <li> CSE 3100 Software Development-IV</li>
-                    <li> CSE 3201 Introduction to Computer Networks</li>
-                    <li> CSE 3202 Introduction to Computer Networks Lab</li>
-                    <li> CSE 3223 Information System Design and Software Engineering</li>
-                    <li> CSE 3224 Information System Design and Software Engineering Lab</li>
-                    <li> CSE 4107 Artificial Intelligence</li>
-                    <li> CSE 4108 Artifical Intelligence Lab</li>
-                  </ul>
-                </li>
-              </ul>
-           
-              
-            </div>
-         
-            
-    
-          </div>
-
-          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" data-aos="fade-up" data-aos-delay="100">
-
-
-            <h3 class="resume-title">Education</h3>
-
-            <div class="resume-item">
-              <h4>Master in Information Technology</h4>
-              <h5>2020 - 2021</h5>
-              <p><em>Institute of Information Technology, University of Dhaka</em></p>
-              <p>CGPA : 3.85 (out of 4.00)</p>
-            </div>
-
-            <div class="resume-item">
-              <h4>BSc in Computer Science and Engineering</h4>
-              <h5>2014 - 2019</h5>
-              <p><em>Ahsanullah University of Science and Technology</em></p>
-              <p></p>
-              <ul>
-                <li>CGPA : 3.944 (out of 4.00)</li>
-                <li>Achievement : Dean's List of Honor </li>
-                <li>Extracurricular Activities: 
-                  <ul>
-                    <li>Vice President, AUST CSE Society, Spring 2018 Semester </li>
-                    <li>General Secretary, AUST CSE Society, Fall 2017 Semester </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <h4>Higher Secondary School Certificate (HSC)</h4>
-              <h5>2011 - 2013</h5>
-              <p><em>Notre Dame College</em></p>
-              <p></p>
-              <ul>
-                <li>GPA : 5.00 (out of 5.00)</li> 
-              </ul>
-            </div>
-
-
-            <div class="resume-item">
-              <h4>Secondary School Certificate (SSC)</h4>
-              <h5>2009 - 2011</h5>
-              <p><em>Ideal School and College</em></p>
-              <p></p>
-              <ul>
-                <li>GPA : 5.00 (out of 5.00)</li> 
-              </ul>
-            </div>
-            
-
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Resume Section -->
-
-
-    <!-- ======= Researches Section ======= -->
-    <section id="researches" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Research Works</h2>
-          <p></p>
-        </div>
-
-          <div class="row">
-          <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 icon-box" data-aos="fade-up" >
-            <div class="icon"><i class="icofont-file-text"></i></div>
-            <h4 class="title">
-              <a href="https://www.semanticscholar.org/reader/7febc4c1c98662146e8e2ff1b08c53e0f3b4d6a8">
-                Machine Learning for Predicting the Stock Price Direction with Trading Indicators
-              </a>
-            </h4>
-            <p class="description">
-              Journal:The ENP Engineering Science Journal (ENPESJ) <br>
-              Issue: Vol. 3 No. 2 (2023)
-            </p>
-          </div>
-        </div>
-
-         
-
-         <div class="row">
-          <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 icon-box" data-aos="fade-up" >
-            <div class="icon"><i class="icofont-file-text"></i></div>
-            <h4 class="title">
-              <a href="https://ieeexplore.ieee.org/abstract/document/10142440">
-                Newspaper Article Summarization Using Combinational Method
-              </a>
-            </h4>
-            <p class="description">
-            Conference: 2023 International Conference on Power, Instrumentation, Control and Computing (PICC) <br>
-            GitHub Repository: 
-            <a href="https://github.com/MdSiamAnsary/Newspaper-Article-Summarization-Using-Combinational-Method">
-              Newspaper Article Summarization Using Combinational Method
-            </a>
-          </p>
-          </div>
-        </div>
-
-          <div class="row">
-          <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 icon-box" data-aos="fade-up" >
-            <div class="icon"><i class="icofont-file-text"></i></div>
-            <h4 class="title">
-              <a href="https://ieeexplore.ieee.org/abstract/document/10150983">
-                Prediction of Stock Price Direction with Trading Indicators using Machine Learning Techniques
-              </a>
-            </h4>
-            <p class="description">Conference: 2022 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE)</p>
-          </div>
-        </div>
-
-       
-
-        <div class="row">
-          <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 icon-box" data-aos="fade-up" >
-            <div class="icon"><i class="icofont-file-text"></i></div>
-            <h4 class="title">
-              <a href="https://pdfs.semanticscholar.org/5275/6c16ffc35d2bc6e4c433c5df1fbd00cc2321.pdf">
-                Breakout Stocks Identification using Machine Learning Approaches
-              </a>
-            </h4>
-            <p class="description">
-              Journal:The ENP Engineering Science Journal (ENPESJ) <br>
-              Issue: Vol. 2 No. 2 (2022)
-            </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 icon-box" data-aos="fade-up" >
-            <div class="icon"><i class="icofont-file-text"></i></div>
-            <h4 class="title">
-              <a href="https://ieeexplore.ieee.org/abstract/document/9893674">
-                A Hybrid Approach for Extractive Summarization of Medical Documents
-              </a>
-            </h4>
-            <p class="description">Conference: 2021 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON)</p>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12 icon-box" data-aos="fade-up" >
-            <div class="icon"><i class="icofont-file-text"></i></div>
-            <h4 class="title">
-              <a href="https://ieeexplore.ieee.org/abstract/document/9396855">
-                A Hybrid Approach for Automatic Extractive Summarization
-              </a>
-            </h4>
-            <p class="description">Conference: 2021 International Conference on Information and Communication Technology for Sustainable Development (ICICT4SD)</p>
-          </div>
-        </div>
-
-
-      </div>
-    </section><!-- End Researches Section -->
-
-
-
-
-    <!-- ======= Contact Info Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p></p>
-        </div>
-
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="icofont-google-map"></i>
-                <h4>Location:</h4>
-                <p>Department of CSE, Ahsanullah University of Science and Technology, Dhaka.</p>
-              </div>
-
-              <div class="email">
-                <i class="icofont-envelope"></i>
-                <h4>Email:</h4>
-                <p>siamansary.cse@aust.edu
-                  <br>siamansary.cse@gmail.com
-                  <br>siamansary.aust@gmail.com
-                </p>
-              </div>
-
-              
-            </div>
-
-          </div>
-
-          <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <iframe src="https://www.google.com/maps/embed/v1/place?q=Ahsanullah+University+of+Science+and+Technology,+Love+Road,+Dhaka,+Bangladesh&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-              
-            </iframe>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Info Section -->
-
-  </main><!-- End #main -->
-
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-  <!-- JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-
+</main>
+<script src="partials.js"></script>
+<script src="nav.js"></script>
 </body>
-
 </html>
