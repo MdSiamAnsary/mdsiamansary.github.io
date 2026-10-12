@@ -4,1047 +4,186 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Hi! This is Ansary — Publications</title>
+<meta name="description" content="Publications of Md. Siam Ansary: 13 journal articles and 11 conference papers on AI-generated text detection, structural health monitoring, NLP, food informatics and stock market analysis."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 <style>
+/* ── STATS ── */
+.pub-stats {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px;
+  background: var(--border); border: 1px solid var(--border); border-radius: 2px;
+  margin-bottom: 2.5rem;
+}
+.pub-stat { background: var(--bg); padding: 1.3rem 1.4rem; }
+.pub-stat-num   { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--accent); display: block; line-height: 1.1; }
+.pub-stat-label { display: block; line-height: 1.45; margin-top: .3rem; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 
-/* ── VIEW TOGGLE ── */
-.view-toggle {
-  display: flex; gap: 0; border: 1px solid var(--border); border-radius: 2px;
-  overflow: hidden; margin-bottom: 2.5rem; width: fit-content;
-}
+/* ── TOOLBAR ── */
+.pub-toolbar { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 2rem; }
+.view-toggle { display: flex; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
 .view-btn {
-  padding: .55rem 1.3rem; font-size: .72rem; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--muted); cursor: pointer;
-  background: none; border: none; font-family: var(--sans); transition: all .25s;
+  padding: .55rem 1.2rem; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); cursor: pointer; background: none; border: none; font-family: var(--sans); transition: all .25s;
 }
+.view-btn + .view-btn { border-left: 1px solid var(--border); }
 .view-btn.active { background: var(--accent); color: #0d0d0d; }
 .view-btn:not(.active):hover { color: var(--text); background: rgba(200,169,110,.06); }
+.pub-search {
+  flex: 1; min-width: 220px; max-width: 380px; margin-left: auto;
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 2px;
+  color: var(--text); font-family: var(--sans); font-size: .85rem; padding: .55rem .9rem;
+  outline: none; transition: border-color .25s;
+}
+.pub-search::placeholder { color: var(--muted); }
+.pub-search:focus { border-color: var(--accent); }
+.pub-result-count { font-size: .72rem; color: var(--muted); width: 100%; text-align: right; min-height: 1em; margin-top: -.6rem; }
 
-/* ── VIEWS ── */
-.view { display: none; }
-.view.active { display: block; }
-
-/* ── TYPE TABS (for type view) ── */
+/* ── TABS (type view) ── */
 .pub-tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
 .pub-tab {
   padding: .6rem 1.6rem; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent;
-  transition: all .25s; margin-bottom: -1px; background: none;
-  border-top: none; border-left: none; border-right: none; font-family: var(--sans);
+  color: var(--muted); cursor: pointer; background: none; border: none; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; font-family: var(--sans); transition: all .25s;
 }
 .pub-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 .pub-tab:hover { color: var(--text); }
-.pub-count { font-size: .6rem; opacity: .45; margin-left: .3rem; }
-.pub-section { display: none; }
-.pub-section.active { display: block; }
+.pub-count { font-size: .62rem; opacity: .5; margin-left: .3rem; }
 
-/* ── THEME GROUPS (for theme view) ── */
-.theme-block { margin-bottom: 3.5rem; }
-.theme-header {
-  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
-  padding-bottom: .8rem; border-bottom: 1px solid var(--border);
+/* ── GROUPS (theme / year views) ── */
+.group-block { margin-bottom: 3.2rem; }
+.group-header {
+  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+  margin-bottom: .4rem; padding-bottom: .7rem; border-bottom: 1px solid var(--border);
 }
-.theme-badge {
-  font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
-  color: #0d0d0d; background: var(--accent); padding: .28rem .75rem;
-  border-radius: 1px; font-weight: 500; white-space: nowrap;
-}
-.theme-header h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; }
-.theme-repo-link {
+.group-header h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; }
+.group-count { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.group-repo {
   margin-left: auto; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: .35rem;
-  border: 1px solid var(--border); padding: .28rem .7rem; border-radius: 2px; transition: all .25s;
-  white-space: nowrap;
+  color: var(--muted); text-decoration: none; border: 1px solid var(--border);
+  padding: .26rem .7rem; border-radius: 2px; transition: all .25s; white-space: nowrap;
 }
-.theme-repo-link:hover { color: var(--accent); border-color: var(--accent); }
+.group-repo:hover { color: var(--accent); border-color: var(--accent); }
+.group-desc { font-size: .84rem; color: var(--muted); margin-bottom: 1.2rem; max-width: 720px; }
 
 /* ── PUB ITEM ── */
 .pub-list { display: flex; flex-direction: column; gap: .9rem; }
 .pub-item {
   background: var(--bg2); border: 1px solid var(--border); border-radius: 2px;
-  padding: 1.4rem 1.6rem;
-  display: grid; grid-template-columns: 28px 1fr auto; gap: 1rem; align-items: start;
+  padding: 1.4rem 1.6rem; display: grid; grid-template-columns: 2.6rem 1fr auto; gap: 1rem; align-items: start;
   transition: border-color .25s, background .25s;
 }
 .pub-item:hover { border-color: rgba(200,169,110,.4); background: rgba(200,169,110,.02); }
+.pub-num { font-family: var(--serif); font-size: .95rem; font-weight: 700; color: var(--accent); opacity: .55; padding-top: .15rem; }
 
-/* no number in theme view */
-.pub-item.no-num { grid-template-columns: 1fr auto; }
+.pub-meta { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; margin-bottom: .5rem; }
+.badge {
+  font-size: .58rem; padding: .12rem .45rem; border-radius: 1px; letter-spacing: .06em;
+  text-transform: uppercase; border: 1px solid; line-height: 1.5;
+}
+.b-type  { background: rgba(200,169,110,.1); border-color: rgba(200,169,110,.25); color: var(--accent); }
+.b-year  { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.1); color: var(--muted); }
+.b-q1    { background: var(--accent); border-color: var(--accent); color: #0d0d0d; font-weight: 500; }
+.b-q     { background: rgba(200,169,110,.06); border-color: rgba(200,169,110,.3); color: var(--accent2); }
+.b-scie  { background: rgba(100,180,100,.08); border-color: rgba(100,180,100,.25); color: #7ecb7e; }
+.b-doaj  { background: rgba(110,160,210,.08); border-color: rgba(110,160,210,.25); color: #8fb8e0; }
 
-.pub-num { font-family: var(--serif); font-size: 1.2rem; color: var(--accent); opacity: .28; line-height: 1; padding-top: .2rem; }
-.pub-body {}
-.pub-meta {
-  font-size: .61rem; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: .4rem;
-  display: flex; flex-wrap: wrap; gap: .35rem; align-items: center;
-}
-.pub-type-badge {
-  font-size: .58rem; padding: .1rem .4rem;
-  background: rgba(200,169,110,.1); border: 1px solid rgba(200,169,110,.2);
-  color: var(--accent); border-radius: 1px; letter-spacing: .05em; text-transform: uppercase;
-}
-.pub-year {
-  font-size: .58rem; padding: .1rem .4rem;
-  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
-  color: var(--muted); border-radius: 1px;
-}
-.pub-index-badge {
-  font-size: .58rem; padding: .1rem .4rem;
-  background: rgba(100,180,100,.08); border: 1px solid rgba(100,180,100,.2);
-  color: #7ecb7e; border-radius: 1px; letter-spacing: .05em; text-transform: uppercase;
-}
-.pub-title { font-family: var(--serif); font-size: .98rem; font-weight: 700; line-height: 1.42; margin-bottom: .35rem; color: var(--text); }
-.pub-venue { font-size: .78rem; color: var(--muted); line-height: 1.5; }
-.pub-authors { font-size: .75rem; color: rgba(240,237,232,.45); margin-top: .25rem; font-style: italic; }
-.pub-note { font-size: .72rem; color: rgba(200,169,110,.55); margin-top: .3rem; font-style: italic; }
+.pub-title { font-family: var(--serif); font-size: 1.02rem; font-weight: 700; line-height: 1.42; margin-bottom: .3rem; }
+.pub-title a { color: var(--text); text-decoration: none; transition: color .2s; }
+.pub-title a:hover { color: var(--accent); }
+.pub-authors { font-size: .8rem; color: rgba(240,237,232,.6); margin-bottom: .25rem; }
+.pub-authors .me { color: var(--text); font-weight: 500; }
+.pub-authors a { color: inherit; text-decoration: underline; text-decoration-color: rgba(240,237,232,.25); text-underline-offset: 2px; }
+.pub-authors a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.pub-venue { font-size: .78rem; color: var(--muted); line-height: 1.55; }
+.pub-venue em { color: rgba(240,237,232,.75); }
+.pub-venue a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted rgba(136,136,136,.5); }
+.pub-venue a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.pub-dates { font-size: .72rem; color: rgba(136,136,136,.85); margin-top: .2rem; }
+.pub-note { font-size: .74rem; color: rgba(200,169,110,.7); margin-top: .35rem; font-style: italic; }
 
-/* ── ACTION BUTTONS ── */
-.pub-actions { display: flex; flex-direction: column; gap: .4rem; flex-shrink: 0; align-self: start; }
+/* ── ACTIONS ── */
+.pub-actions { display: flex; flex-direction: column; gap: .4rem; }
 .pub-btn {
-  display: inline-flex; align-items: center; gap: .32rem;
-  padding: .32rem .75rem; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
+  display: inline-flex; align-items: center; justify-content: center; gap: .3rem;
+  padding: .32rem .8rem; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
   border-radius: 2px; text-decoration: none; font-family: var(--sans); font-weight: 500;
-  transition: all .25s; white-space: nowrap; border: 1px solid;
+  transition: all .25s; white-space: nowrap; border: 1px solid; cursor: pointer; background: none;
 }
-.pub-btn-paper  { background: rgba(200,169,110,.1); border-color: rgba(200,169,110,.25); color: var(--accent); }
-.pub-btn-paper:hover  { background: rgba(200,169,110,.22); border-color: var(--accent); }
-.pub-btn-github { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.1); color: var(--muted); }
-.pub-btn-github:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); color: var(--text); }
+.btn-paper { background: rgba(200,169,110,.1); border-color: rgba(200,169,110,.25); color: var(--accent); }
+.btn-paper:hover { background: rgba(200,169,110,.22); border-color: var(--accent); }
+.btn-ghost { background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.1); color: var(--muted); }
+.btn-ghost:hover, .btn-ghost[aria-expanded="true"] { border-color: rgba(255,255,255,.25); color: var(--text); }
 
-/* ── STATS BAR ── */
-.pub-stats { display: flex; gap: 3rem; flex-wrap: wrap; padding: 2rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
-.pub-stat-num   { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--accent); display: block; }
-.pub-stat-label { font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+/* ── CITE PANEL ── */
+.cite-panel { grid-column: 2 / -1; display: none; border-top: 1px dashed var(--border); padding-top: 1rem; margin-top: .2rem; }
+.cite-panel.open { display: block; }
+.cite-label { display: flex; justify-content: space-between; align-items: center; font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: .35rem; }
+.cite-block {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .74rem; line-height: 1.6;
+  color: rgba(240,237,232,.8); background: var(--bg); border: 1px solid var(--border); border-radius: 2px;
+  padding: .7rem .9rem; white-space: pre-wrap; word-break: break-word; margin-bottom: .9rem;
+}
+.cite-block.plain { font-family: var(--sans); font-size: .8rem; }
+.copy-btn { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--border); padding: .15rem .55rem; border-radius: 2px; cursor: pointer; font-family: var(--sans); }
+.copy-btn:hover { color: var(--accent); border-color: var(--accent); }
 
-@media(max-width:960px){
-  .pub-item { grid-template-columns: 24px 1fr; }
-  .pub-item.no-num { grid-template-columns: 1fr; }
-  .pub-actions { flex-direction: row; flex-wrap: wrap; grid-column: 1 / -1; }
+.empty-msg { color: var(--muted); font-size: .9rem; padding: 2rem 0; display: none; }
+.legend { font-size: .72rem; color: var(--muted); margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border); line-height: 1.8; }
+
+@media (max-width: 960px) {
+  .pub-stats { grid-template-columns: repeat(3, 1fr); }
+  .pub-stat:nth-child(4) { grid-column: span 1; }
+  .pub-stat:last-child { grid-column: span 2; }
+  .pub-search { margin-left: 0; max-width: none; width: 100%; }
+  .pub-result-count { text-align: left; }
+  .pub-item { grid-template-columns: 2.2rem 1fr; }
+  .pub-actions { flex-direction: row; flex-wrap: wrap; grid-column: 2 / -1; }
+  .cite-panel { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .pub-stats { grid-template-columns: repeat(2, 1fr); }
+  .pub-stat:last-child { grid-column: 1 / -1; }
+  .pub-item { grid-template-columns: 1fr; padding: 1.2rem; }
+  .pub-num { padding-top: 0; }
+  .pub-actions { grid-column: 1; }
+  .pub-tab { padding: .6rem 1rem; }
 }
 </style>
 </head>
 <body>
 <main>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
   <p class="page-hero-eyebrow fade-up d1">Research</p>
   <h1 class="fade-up d2"><em>Publications</em></h1>
-  <p class="fade-up d3">13 journal articles · 11 conference proceedings — spanning NLP, structural health monitoring, stock market analysis, and intelligent systems.</p>
+  <p class="fade-up d3">13 journal articles and 11 conference papers on AI-generated text detection, structural health monitoring, text summarization, food informatics and stock market analysis.</p>
 </div>
 
 <section class="section">
 
-  <!-- STATS -->
-  <div class="pub-stats">
-    <div><span class="pub-stat-num">24</span><span class="pub-stat-label">Total Papers</span></div>
-    <div><span class="pub-stat-num">13</span><span class="pub-stat-label">Journal Articles</span></div>
-    <div><span class="pub-stat-num">11</span><span class="pub-stat-label">Conference Proceedings</span></div>
-  </div>
+  <div class="pub-stats" id="pub-stats"></div>
 
-  <!-- VIEW TOGGLE -->
-  <div class="view-toggle">
-    <button class="view-btn active" onclick="switchView('type', this)">By Type</button>
-    <button class="view-btn"        onclick="switchView('theme', this)">By Theme</button>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════
-       VIEW: BY TYPE
-  ═══════════════════════════════════════════════ -->
-  <div id="view-type" class="view active">
-
-    <div class="pub-tabs">
-      <button class="pub-tab active" onclick="switchTab('journals', this)">Journals <span class="pub-count">(13)</span></button>
-      <button class="pub-tab"        onclick="switchTab('conferences', this)">Conferences <span class="pub-count">(11)</span></button>
+  <div class="pub-toolbar">
+    <div class="view-toggle" role="tablist" aria-label="Group publications">
+      <button class="view-btn active" data-view="type"  role="tab" aria-selected="true">By Type</button>
+      <button class="view-btn"        data-view="theme" role="tab" aria-selected="false">By Theme</button>
+      <button class="view-btn"        data-view="year"  role="tab" aria-selected="false">By Year</button>
     </div>
-
-    <!-- JOURNALS -->
-    <div id="tab-journals" class="pub-section active">
-      <div class="pub-list">
-
-        <!-- J1 -->
-        <div class="pub-item">
-          <span class="pub-num">1</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              Applied AI Letters · Wiley
-              <span class="pub-year">2026</span>
-              <span class="pub-index-badge">Q3</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">Detection of Bangla AI-Generated Texts Using a Quantum Kernel Support Vector Machine</h3>
-            <p class="pub-venue">Applied AI Letters, Volume 7, Issue 3. doi: 10.1002/ail2.70051</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-venue" style="margin-top:.3rem;">Accepted: 5 October 2026 · Published: 12 October 2026</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://onlinelibrary.wiley.com/doi/10.1002/ail2.70051" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <!-- J2 -->
-        <div class="pub-item">
-          <span class="pub-num">2</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              Discover Informatics · Springer Nature
-              <span class="pub-year">2026</span>
-            </div>
-            <h3 class="pub-title">A comprehensive survey of machine and deep learning as well as explainable artificial intelligence approaches for heart disease detection</h3>
-            <p class="pub-venue">Discover Informatics, Volume 1. doi: 10.1007/s44564-026-00019-w</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-venue" style="margin-top:.3rem;">Accepted: 15 September 2026 · Published: 23 September 2026</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://link.springer.com/article/10.1007/s44564-026-00019-w" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <!-- J3 -->
-        <div class="pub-item">
-          <span class="pub-num">3</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              Shock and Vibration · Wiley
-              <span class="pub-year">2026</span>
-              <span class="pub-index-badge">Q3</span>
-              <span class="pub-index-badge">SCIE</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">A Comprehensive Survey on Concrete Crack Detection</h3>
-            <p class="pub-venue">Shock and Vibration, Volume 2026, Issue 1. doi: 10.1155/vib/4950659</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-venue" style="margin-top:.3rem;">Accepted: 25 July 2026 · Published: 28 August 2026</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://onlinelibrary.wiley.com/doi/10.1155/vib/4950659" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <!-- J4 -->
-        <div class="pub-item">
-          <span class="pub-num">4</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              Shock and Vibration · Wiley
-              <span class="pub-year">2026</span>
-              <span class="pub-index-badge">Q3</span>
-              <span class="pub-index-badge">SCIE</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">Physics-Informed and Uncertainty-Aware Stacking Ensemble for Robust Prediction of Concrete Compressive Strength</h3>
-            <p class="pub-venue">Shock and Vibration, Volume 2026, Issue 1. doi: 10.1155/vib/3817773</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-venue" style="margin-top:.3rem;">Accepted: 26 June 2026 · Published: 4 August 2026</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://onlinelibrary.wiley.com/doi/10.1155/vib/3817773" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <!-- J5 -->
-        <div class="pub-item">
-          <span class="pub-num">5</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              Applied AI Letters · Wiley
-              <span class="pub-year">2026</span>
-              <span class="pub-index-badge">Q3</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">Transformer-Based Contextual Modeling for Predicting Calories From Recipes</h3>
-            <p class="pub-venue">Applied AI Letters, Volume 7, Issue 4. doi: 10.1002/ail2.70036</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://orcid.org/0009-0004-8920-1438" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Amina Brinto</a></p>
-            <p class="pub-venue" style="margin-top:.3rem;">Accepted: 17 June 2026 · Published: 1 July 2026</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://onlinelibrary.wiley.com/doi/10.1002/ail2.70036" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Calorie-Prediction" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- J6 -->
-        <div class="pub-item">
-          <span class="pub-num">6</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              International Journal of Intelligent Systems · Wiley
-              <span class="pub-year">2026</span>
-              <span class="pub-index-badge">Q1</span>
-              <span class="pub-index-badge">SCIE</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">A Multirepresentation Stacked Ensemble for AI-Generated Text Detection</h3>
-            <p class="pub-venue">International Journal of Intelligent Systems, Volume 2026, Issue 1. doi: 10.1155/int/3992539</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-venue" style="margin-top:.3rem;">Accepted: 10 April 2026 · Published: 26 May 2026</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://onlinelibrary.wiley.com/doi/10.1155/int/3992539" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- J7 -->
-        <div class="pub-item">
-          <span class="pub-num">7</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              Shock and Vibration · Wiley
-              <span class="pub-year">2026</span>
-              <span class="pub-index-badge">SCIE</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">Transfer Learning With CLIP for Intelligent Concrete Crack Detection in Structural Health Monitoring</h3>
-            <p class="pub-venue">Shock and Vibration, Volume 2026, Issue 1. doi: 10.1155/vib/4194403</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-venue" style="margin-top:.3rem;">Accepted: 29 January 2026 · Published: 16 February 2026</p>
-            <p class="pub-note">Currently Q3; was Q2 at time of publication</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://onlinelibrary.wiley.com/doi/10.1155/vib/4194403" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- J8 -->
-        <div class="pub-item">
-          <span class="pub-num">8</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              ENP Engineering Science Journal · Ecole Nationale Polytechnique
-              <span class="pub-year">2026</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">Food Freshness Evaluation Using a CLIP-Based Architecture</h3>
-            <p class="pub-venue">ENP Engineering Science Journal (ENPESJ), Volume 5, Issue 2. Published: 11 January 2026</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://orcid.org/0009-0004-8920-1438" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Amina Brinto</a>, Shaila Sajnin Keya</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://enpesj.enp.edu.dz/index.php/enpesj/article/view/344" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- J9 -->
-        <div class="pub-item">
-          <span class="pub-num">9</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              European Journal of Electrical Engineering and Computer Science · European Open Science
-              <span class="pub-year">2025</span>
-            </div>
-            <h3 class="pub-title">Structural Damage Detection in Civil Infrastructures</h3>
-            <p class="pub-venue">European Journal of Electrical Engineering and Computer Science, Volume 9, Issue 6. Published: 7 November 2025</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://www.linkedin.com/in/awaleennawarsuha" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Awaleen Nawar Suha</a></p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://eu-opensci.org/index.php/ejece/article/view/19758" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- J10 -->
-        <div class="pub-item">
-          <span class="pub-num">10</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              European Journal of Electrical Engineering and Computer Science · European Open Science
-              <span class="pub-year">2025</span>
-            </div>
-            <h3 class="pub-title">Prediction of Profitable Stock using Candlestick Patterns with ML</h3>
-            <p class="pub-venue">European Journal of Electrical Engineering and Computer Science, Volume 9, Issue 5. Published: 1 September 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="http://ejece.org/index.php/ejece/article/view/738" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Profitable-Stock-using-Candlestick-Patterns" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- J11 -->
-        <div class="pub-item">
-          <span class="pub-num">11</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              International Journal of Computer Applications · Foundation of Computer Science, NY
-              <span class="pub-year">2025</span>
-            </div>
-            <h3 class="pub-title">Machine Learning-based Detection of Spear Phishing Emails</h3>
-            <p class="pub-venue">International Journal of Computer Applications, Volume 187, Issue 24. Published: July 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-note">Note: The journal is listed on Beall's list. The author was unaware of this at the time of submission, revision, and publication.</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://www.ijcaonline.org/archives/volume187/number24/machine-learning-based-detection-of-spear-phishing-emails/" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- J12 -->
-        <div class="pub-item">
-          <span class="pub-num">12</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              ENP Engineering Science Journal · Ecole Nationale Polytechnique
-              <span class="pub-year">2023</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">Machine Learning for Predicting the Stock Price Direction with Trading Indicators</h3>
-            <p class="pub-venue">ENP Engineering Science Journal (ENPESJ), Volume 3, Issue 2. Published: 31 December 2023</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://enpesj.enp.edu.dz/index.php/enpesj/article/view/178" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- J13 -->
-        <div class="pub-item">
-          <span class="pub-num">13</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Journal</span>
-              ENP Engineering Science Journal · Ecole Nationale Polytechnique
-              <span class="pub-year">2022</span>
-              <span class="pub-index-badge">DOAJ</span>
-            </div>
-            <h3 class="pub-title">Breakout Stocks Identification using Machine Learning Approaches</h3>
-            <p class="pub-venue">ENP Engineering Science Journal (ENPESJ), Volume 2, Issue 2. Published: 28 December 2022</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://enpesj.enp.edu.dz/index.php/enpesj/article/view/173" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Breakout-Stocks-Identification-using-ML" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-      </div><!-- end pub-list journals -->
-    </div><!-- end tab-journals -->
-
-    <!-- CONFERENCES -->
-    <div id="tab-conferences" class="pub-section">
-      <div class="pub-list">
-
-        <!-- C1 -->
-        <div class="pub-item">
-          <span class="pub-num">1</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              Atlantis Press (Springer Nature)
-              <span class="pub-year">2026</span>
-            </div>
-            <h3 class="pub-title">Identifying AI Generated Scientific Abstracts using Quantum Machine Learning</h3>
-            <p class="pub-venue">International Conference on Intelligent Data Analysis and Applications (IDAA 2025), 12–13 December 2025. Online: 8 June 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-note">Published as a chapter in the Advances in Intelligent Systems Research series</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://www.atlantis-press.com/proceedings/idaa-25/126024889" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- C2 -->
-        <div class="pub-item">
-          <span class="pub-num">2</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2026</span>
-            </div>
-            <h3 class="pub-title">MISTY: Multidimensional Identification of Synthetic Text Yield</h3>
-            <p class="pub-venue">2025 IEEE International Conference on Signal Processing, Information, Communication and Systems (SPICSCON), 21–22 November 2025. Online: 11 May 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/abstract/document/11504262" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- C3 -->
-        <div class="pub-item">
-          <span class="pub-num">3</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2026</span>
-            </div>
-            <h3 class="pub-title">Stacking Ensemble Approach for AI Generated Text Detection with Appropriate Feature Selection</h3>
-            <p class="pub-venue">2025 IEEE 4th International Conference on Robotics, Automation, Artificial-Intelligence and Internet-of-Things (RAAICON), 27–28 November 2025. Online: 7 May 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/11502163" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- C4 -->
-        <div class="pub-item">
-          <span class="pub-num">4</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2026</span>
-            </div>
-            <h3 class="pub-title">Calorie Estimation using Ensemble Technique from Recipes of Bangladeshi Foods</h3>
-            <p class="pub-venue">2025 IEEE 2nd International Conference on Computing, Applications and Systems (COMPAS), 23–24 October 2025. Online: 12 February 2026</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://orcid.org/0009-0004-8920-1438" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Amina Brinto</a></p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/11381855" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Calorie-Prediction" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- C5 -->
-        <div class="pub-item">
-          <span class="pub-num">5</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2025</span>
-            </div>
-            <h3 class="pub-title">Identification of AI Generated Texts Using an Ensemble Method</h3>
-            <p class="pub-venue">2025 International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN), 31 July – 2 August 2025. Online: 30 September 2025</p>
-            <p class="pub-authors">Md. Siam Ansary, Nawshin Tabassum Tanny</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/11171775" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- C6 -->
-        <div class="pub-item">
-          <span class="pub-num">6</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2025</span>
-            </div>
-            <h3 class="pub-title">A Novel Dataset for Identifying AI Generated Bengali Texts</h3>
-            <p class="pub-venue">2025 International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN), 31 July – 2 August 2025. Online: 29 September 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/11171930" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- C7 -->
-        <div class="pub-item">
-          <span class="pub-num">7</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2025</span>
-            </div>
-            <h3 class="pub-title">A Novel Dataset for Abstractive Summarization of Bengali Health Documents</h3>
-            <p class="pub-venue">2024 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON), 28–29 November 2024. Online: 17 April 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/10962590" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <!-- C8 -->
-        <div class="pub-item">
-          <span class="pub-num">8</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2023</span>
-            </div>
-            <h3 class="pub-title">Prediction of Stock Price Direction with Trading Indicators using Machine Learning Techniques</h3>
-            <p class="pub-venue">2022 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE), 30–31 December 2022. Online: 19 June 2023</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://orcid.org/0009-0004-8920-1438" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Amina Brinto</a></p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/10150983" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- C9 -->
-        <div class="pub-item">
-          <span class="pub-num">9</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2023</span>
-            </div>
-            <h3 class="pub-title">Newspaper Article Summarization Using Combinational Method</h3>
-            <p class="pub-venue">2023 International Conference on Power, Instrumentation, Control and Computing (PICC), 19–21 April 2023. Online: 8 June 2023</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/10142440" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Newspaper-Article-Summarization-Using-Combinational-Method" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <!-- C10 -->
-        <div class="pub-item">
-          <span class="pub-num">10</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2022</span>
-            </div>
-            <h3 class="pub-title">A Hybrid Approach for Extractive Summarization of Medical Documents</h3>
-            <p class="pub-venue">2021 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON), 4–5 December 2021. Online: 19 September 2022</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/9893674" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <!-- C11 -->
-        <div class="pub-item">
-          <span class="pub-num">11</span>
-          <div class="pub-body">
-            <div class="pub-meta">
-              <span class="pub-type-badge">Conference</span>
-              IEEE
-              <span class="pub-year">2021</span>
-            </div>
-            <h3 class="pub-title">A Hybrid Approach for Automatic Extractive Summarization</h3>
-            <p class="pub-venue">2021 International Conference on Information and Communication Technology for Sustainable Development (ICICT4SD), 27–28 February 2021. Online: 12 April 2021</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/9396855/" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-      </div><!-- end pub-list conferences -->
-    </div><!-- end tab-conferences -->
-
-  </div><!-- end view-type -->
-
-  <!-- ═══════════════════════════════════════════════
-       VIEW: BY THEME
-  ═══════════════════════════════════════════════ -->
-  <div id="view-theme" class="view">
-
-    <!-- THEME: AI-Generated Text Detection -->
-    <div class="theme-block">
-      <div class="theme-header">
-        <span class="theme-badge">7 Papers</span>
-        <h3>AI-Generated Text Detection</h3>
-        <a class="theme-repo-link" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">↗ GitHub Repo</a>
-      </div>
-      <div class="pub-list">
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> Applied AI Letters · Wiley <span class="pub-year">2026</span> <span class="pub-index-badge">Q3</span></div>
-            <h3 class="pub-title">Detection of Bangla AI-Generated Texts Using a Quantum Kernel Support Vector Machine</h3>
-            <p class="pub-venue">Applied AI Letters, Volume 7, Issue 3, 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://onlinelibrary.wiley.com/doi/10.1002/ail2.70051" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> International Journal of Intelligent Systems · Wiley <span class="pub-year">2026</span> <span class="pub-index-badge">Q1</span> <span class="pub-index-badge">SCIE</span></div>
-            <h3 class="pub-title">A Multirepresentation Stacked Ensemble for AI-Generated Text Detection</h3>
-            <p class="pub-venue">International Journal of Intelligent Systems, Volume 2026, Issue 1, 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://onlinelibrary.wiley.com/doi/10.1155/int/3992539" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> Atlantis Press (Springer Nature) <span class="pub-year">2026</span></div>
-            <h3 class="pub-title">Identifying AI Generated Scientific Abstracts using Quantum Machine Learning</h3>
-            <p class="pub-venue">IDAA 2025, Advances in Intelligent Systems Research</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://www.atlantis-press.com/proceedings/idaa-25/126024889" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · SPICSCON <span class="pub-year">2026</span></div>
-            <h3 class="pub-title">MISTY: Multidimensional Identification of Synthetic Text Yield</h3>
-            <p class="pub-venue">IEEE SPICSCON 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/abstract/document/11504262" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · RAAICON <span class="pub-year">2026</span></div>
-            <h3 class="pub-title">Stacking Ensemble Approach for AI Generated Text Detection with Appropriate Feature Selection</h3>
-            <p class="pub-venue">IEEE RAAICON 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/11502163" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · QPAIN <span class="pub-year">2025</span></div>
-            <h3 class="pub-title">Identification of AI Generated Texts Using an Ensemble Method</h3>
-            <p class="pub-venue">IEEE QPAIN 2025</p>
-            <p class="pub-authors">Md. Siam Ansary, Nawshin Tabassum Tanny</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/11171775" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · QPAIN <span class="pub-year">2025</span></div>
-            <h3 class="pub-title">A Novel Dataset for Identifying AI Generated Bengali Texts</h3>
-            <p class="pub-venue">IEEE QPAIN 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/11171930" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-      </div>
-    </div><!-- end theme: AI-Generated Text -->
-
-    <!-- THEME: Structural Damage Detection -->
-    <div class="theme-block">
-      <div class="theme-header">
-        <span class="theme-badge">4 Papers</span>
-        <h3>Structural Damage Detection</h3>
-        <a class="theme-repo-link" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">↗ GitHub Repo</a>
-      </div>
-      <div class="pub-list">
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> Shock and Vibration · Wiley <span class="pub-year">2026</span> <span class="pub-index-badge">Q3</span> <span class="pub-index-badge">SCIE</span></div>
-            <h3 class="pub-title">A Comprehensive Survey on Concrete Crack Detection</h3>
-            <p class="pub-venue">Shock and Vibration, Volume 2026, Issue 1, 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://onlinelibrary.wiley.com/doi/10.1155/vib/4950659" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> Shock and Vibration · Wiley <span class="pub-year">2026</span> <span class="pub-index-badge">Q3</span> <span class="pub-index-badge">SCIE</span></div>
-            <h3 class="pub-title">Physics-Informed and Uncertainty-Aware Stacking Ensemble for Robust Prediction of Concrete Compressive Strength</h3>
-            <p class="pub-venue">Shock and Vibration, Volume 2026, Issue 1, 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://onlinelibrary.wiley.com/doi/10.1155/vib/3817773" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> Shock and Vibration · Wiley <span class="pub-year">2026</span> <span class="pub-index-badge">SCIE</span></div>
-            <h3 class="pub-title">Transfer Learning With CLIP for Intelligent Concrete Crack Detection in Structural Health Monitoring</h3>
-            <p class="pub-venue">Shock and Vibration, Volume 2026, Issue 1, 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-note">Currently Q3; was Q2 at time of publication</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://onlinelibrary.wiley.com/doi/10.1155/vib/4194403" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> European Journal of Electrical Engineering and Computer Science <span class="pub-year">2025</span></div>
-            <h3 class="pub-title">Structural Damage Detection in Civil Infrastructures</h3>
-            <p class="pub-venue">EJECE, Volume 9, Issue 6, 2025</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://www.linkedin.com/in/awaleennawarsuha" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Awaleen Nawar Suha</a></p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://eu-opensci.org/index.php/ejece/article/view/19758" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-      </div>
-    </div><!-- end theme: Structural Damage -->
-
-    <!-- THEME: Food & Nutrition -->
-    <div class="theme-block">
-      <div class="theme-header">
-        <span class="theme-badge">3 Papers</span>
-        <h3>Food &amp; Nutrition</h3>
-      </div>
-      <div class="pub-list">
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> Applied AI Letters · Wiley <span class="pub-year">2026</span> <span class="pub-index-badge">Q3</span></div>
-            <h3 class="pub-title">Transformer-Based Contextual Modeling for Predicting Calories From Recipes</h3>
-            <p class="pub-venue">Applied AI Letters, Volume 7, Issue 4, 2026</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://orcid.org/0009-0004-8920-1438" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Amina Brinto</a></p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://onlinelibrary.wiley.com/doi/10.1002/ail2.70036" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Calorie-Prediction" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> ENP Engineering Science Journal <span class="pub-year">2026</span> <span class="pub-index-badge">DOAJ</span></div>
-            <h3 class="pub-title">Food Freshness Evaluation Using a CLIP-Based Architecture</h3>
-            <p class="pub-venue">ENPESJ, Volume 5, Issue 2, 2026</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://orcid.org/0009-0004-8920-1438" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Amina Brinto</a>, Shaila Sajnin Keya</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://enpesj.enp.edu.dz/index.php/enpesj/article/view/344" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · COMPAS <span class="pub-year">2026</span></div>
-            <h3 class="pub-title">Calorie Estimation using Ensemble Technique from Recipes of Bangladeshi Foods</h3>
-            <p class="pub-venue">IEEE COMPAS 2025</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://orcid.org/0009-0004-8920-1438" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Amina Brinto</a></p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/11381855" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Calorie-Prediction" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-      </div>
-    </div><!-- end theme: Food & Nutrition -->
-
-    <!-- THEME: Stock Market Analysis -->
-    <div class="theme-block">
-      <div class="theme-header">
-        <span class="theme-badge">4 Papers</span>
-        <h3>Stock Market Analysis</h3>
-      </div>
-      <div class="pub-list">
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> EJECE <span class="pub-year">2025</span></div>
-            <h3 class="pub-title">Prediction of Profitable Stock using Candlestick Patterns with ML</h3>
-            <p class="pub-venue">European Journal of Electrical Engineering and Computer Science, Volume 9, Issue 5, 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="http://ejece.org/index.php/ejece/article/view/738" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Profitable-Stock-using-Candlestick-Patterns" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> ENPESJ <span class="pub-year">2023</span> <span class="pub-index-badge">DOAJ</span></div>
-            <h3 class="pub-title">Machine Learning for Predicting the Stock Price Direction with Trading Indicators</h3>
-            <p class="pub-venue">ENP Engineering Science Journal, Volume 3, Issue 2, 2023</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://enpesj.enp.edu.dz/index.php/enpesj/article/view/178" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> ENPESJ <span class="pub-year">2022</span> <span class="pub-index-badge">DOAJ</span></div>
-            <h3 class="pub-title">Breakout Stocks Identification using Machine Learning Approaches</h3>
-            <p class="pub-venue">ENP Engineering Science Journal, Volume 2, Issue 2, 2022</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://enpesj.enp.edu.dz/index.php/enpesj/article/view/173" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Breakout-Stocks-Identification-using-ML" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · WIECON-ECE <span class="pub-year">2023</span></div>
-            <h3 class="pub-title">Prediction of Stock Price Direction with Trading Indicators using Machine Learning Techniques</h3>
-            <p class="pub-venue">IEEE WIECON-ECE 2022</p>
-            <p class="pub-authors">Md. Siam Ansary, <a href="https://orcid.org/0009-0004-8920-1438" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(240,237,232,.2);">Amina Brinto</a></p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/10150983" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-      </div>
-    </div><!-- end theme: Stock Market -->
-
-    <!-- THEME: Text Summarization -->
-    <div class="theme-block">
-      <div class="theme-header">
-        <span class="theme-badge">4 Papers</span>
-        <h3>Text Summarization</h3>
-      </div>
-      <div class="pub-list">
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · BECITHCON <span class="pub-year">2025</span></div>
-            <h3 class="pub-title">A Novel Dataset for Abstractive Summarization of Bengali Health Documents</h3>
-            <p class="pub-venue">IEEE BECITHCON 2024</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/10962590" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · PICC <span class="pub-year">2023</span></div>
-            <h3 class="pub-title">Newspaper Article Summarization Using Combinational Method</h3>
-            <p class="pub-venue">IEEE PICC 2023</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://ieeexplore.ieee.org/document/10142440" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/Newspaper-Article-Summarization-Using-Combinational-Method" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · BECITHCON <span class="pub-year">2022</span></div>
-            <h3 class="pub-title">A Hybrid Approach for Extractive Summarization of Medical Documents</h3>
-            <p class="pub-venue">IEEE BECITHCON 2021</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/9893674" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Conference</span> IEEE · ICICT4SD <span class="pub-year">2021</span></div>
-            <h3 class="pub-title">A Hybrid Approach for Automatic Extractive Summarization</h3>
-            <p class="pub-venue">IEEE ICICT4SD 2021</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://ieeexplore.ieee.org/document/9396855/" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-      </div>
-    </div><!-- end theme: Text Summarization -->
-
-    <!-- THEME: Heart Disease Detection -->
-    <div class="theme-block">
-      <div class="theme-header">
-        <span class="theme-badge">1 Paper</span>
-        <h3>Heart Disease Detection</h3>
-      </div>
-      <div class="pub-list">
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> Discover Informatics · Springer Nature <span class="pub-year">2026</span></div>
-            <h3 class="pub-title">A comprehensive survey of machine and deep learning as well as explainable artificial intelligence approaches for heart disease detection</h3>
-            <p class="pub-venue">Discover Informatics, Volume 1, 2026</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper" href="https://link.springer.com/article/10.1007/s44564-026-00019-w" target="_blank" rel="noopener">Paper</a>
-          </div>
-        </div>
-
-      </div>
-    </div><!-- end theme: Heart Disease -->
-
-    <!-- THEME: Cybersecurity -->
-    <div class="theme-block">
-      <div class="theme-header">
-        <span class="theme-badge">1 Paper</span>
-        <h3>Cybersecurity</h3>
-      </div>
-      <div class="pub-list">
-
-        <div class="pub-item no-num">
-          <div class="pub-body">
-            <div class="pub-meta"><span class="pub-type-badge">Journal</span> International Journal of Computer Applications <span class="pub-year">2025</span></div>
-            <h3 class="pub-title">Machine Learning-based Detection of Spear Phishing Emails</h3>
-            <p class="pub-venue">International Journal of Computer Applications, Volume 187, Issue 24, July 2025</p>
-            <p class="pub-authors">Md. Siam Ansary</p>
-            <p class="pub-note">Note: The journal is listed on Beall's list. The author was unaware of this at the time of submission, revision, and publication.</p>
-          </div>
-          <div class="pub-actions">
-            <a class="pub-btn pub-btn-paper"  href="https://www.ijcaonline.org/archives/volume187/number24/machine-learning-based-detection-of-spear-phishing-emails/" target="_blank" rel="noopener">Paper</a>
-            <a class="pub-btn pub-btn-github" href="https://github.com/MdSiamAnsary/ClassificationTasks" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-      </div>
-    </div><!-- end theme: Cybersecurity -->
-
-  </div><!-- end view-theme -->
+    <input type="search" class="pub-search" id="pub-search" placeholder="Search title, venue, co-author, keyword…" aria-label="Search publications"/>
+    <p class="pub-result-count" id="pub-result-count" aria-live="polite"></p>
+  </div>
+
+  <div id="pub-root"></div>
+  <p class="empty-msg" id="empty-msg">No publications match your search.</p>
+
+  <noscript><p class="group-desc">This page needs JavaScript to list publications. The full list is also on <a href="https://scholar.google.com/citations?user=LvOwTM8AAAAJ&amp;hl=en" style="color:var(--accent)">Google Scholar</a>.</p></noscript>
+
+  <p class="legend">
+    <strong style="color:var(--text);font-weight:500;">Indexing:</strong>
+    Q1–Q4 = Scopus (SJR) quartile &nbsp;·&nbsp; SCIE = Web of Science Science Citation Index Expanded &nbsp;·&nbsp; DOAJ = Directory of Open Access Journals.
+    Conference years show when the paper appeared online; the conference dates are listed with each entry.
+  </p>
 
 </section>
 
@@ -1052,18 +191,425 @@
 <script src="partials.js"></script>
 <script src="nav.js"></script>
 <script>
-function switchView(name, btn) {
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('view-' + name).classList.add('active');
-  btn.classList.add('active');
+/* ════════════════════════════════════════════════════════════
+   PUBLICATION DATA — edit here; every view is built from this.
+   ════════════════════════════════════════════════════════════ */
+const ME = 'Md. Siam Ansary';
+const PEOPLE = {
+  'Amina Brinto':       'https://orcid.org/0009-0004-8920-1438',
+  'Awaleen Nawar Suha': 'https://www.linkedin.com/in/awaleennawarsuha'
+};
+const REPO = 'https://github.com/MdSiamAnsary/ClassificationTasks';
+
+const THEMES = {
+  aitext:  { name: 'AI-Generated Text Detection',  repo: REPO,
+             desc: 'Ensemble, multi-representation and quantum machine learning methods for distinguishing human from machine-written text in English and Bengali, including a new Bengali dataset.' },
+  struct:  { name: 'Structural Health Monitoring', repo: REPO,
+             desc: 'Concrete crack detection with CLIP transfer learning, physics-informed ensembles for compressive strength, and surveys of damage detection in civil infrastructure.' },
+  summ:    { name: 'Text Summarization',
+             desc: 'Extractive and abstractive summarization of news, medical and Bengali health documents.' },
+  food:    { name: 'Food & Nutrition',
+             desc: 'Calorie prediction from recipes and CLIP-based food freshness evaluation.' },
+  stock:   { name: 'Stock Market Analysis',
+             desc: 'Machine learning for price direction, breakout stocks and candlestick-pattern-based profitability.' },
+  heart:   { name: 'Heart Disease Detection',
+             desc: 'A survey of machine learning, deep learning and explainable AI approaches.' },
+  cyber:   { name: 'Cybersecurity',
+             desc: 'Machine learning-based spear-phishing email detection.' }
+};
+const THEME_ORDER = ['aitext', 'struct', 'summ', 'food', 'stock', 'heart', 'cyber'];
+
+const PUBS = [
+  // ── JOURNALS ──
+  { id:'J1', type:'journal', theme:'aitext', year:2026,
+    title:'Detection of Bangla AI-Generated Texts Using a Quantum Kernel Support Vector Machine',
+    authors:[ME], venue:'Applied AI Letters', publisher:'Wiley', vol:'7', issue:'3',
+    doi:'10.1002/ail2.70051', idx:['Q3','DOAJ'],
+    dates:'Accepted 5 October 2026 · Published 12 October 2026',
+    url:'https://onlinelibrary.wiley.com/doi/10.1002/ail2.70051' },
+
+  { id:'J2', type:'journal', theme:'heart', year:2026,
+    title:'A comprehensive survey of machine and deep learning as well as explainable artificial intelligence approaches for heart disease detection',
+    authors:[ME], venue:'Discover Informatics', publisher:'Springer Nature', vol:'1',
+    doi:'10.1007/s44564-026-00019-w', idx:[],
+    dates:'Accepted 15 September 2026 · Published 23 September 2026',
+    url:'https://link.springer.com/article/10.1007/s44564-026-00019-w' },
+
+  { id:'J3', type:'journal', theme:'struct', year:2026,
+    title:'A Comprehensive Survey on Concrete Crack Detection',
+    authors:[ME], venue:'Shock and Vibration', publisher:'Wiley', vol:'2026', issue:'1',
+    doi:'10.1155/vib/4950659', idx:['Q3','SCIE','DOAJ'],
+    dates:'Accepted 25 July 2026 · Published 28 August 2026',
+    url:'https://onlinelibrary.wiley.com/doi/10.1155/vib/4950659' },
+
+  { id:'J4', type:'journal', theme:'struct', year:2026,
+    title:'Physics-Informed and Uncertainty-Aware Stacking Ensemble for Robust Prediction of Concrete Compressive Strength',
+    authors:[ME], venue:'Shock and Vibration', publisher:'Wiley', vol:'2026', issue:'1',
+    doi:'10.1155/vib/3817773', idx:['Q3','SCIE','DOAJ'],
+    dates:'Accepted 26 June 2026 · Published 4 August 2026',
+    url:'https://onlinelibrary.wiley.com/doi/10.1155/vib/3817773' },
+
+  { id:'J5', type:'journal', theme:'food', year:2026,
+    title:'Transformer-Based Contextual Modeling for Predicting Calories From Recipes',
+    authors:[ME,'Amina Brinto'], venue:'Applied AI Letters', publisher:'Wiley', vol:'7', issue:'4',
+    doi:'10.1002/ail2.70036', idx:['Q3','DOAJ'],
+    dates:'Accepted 17 June 2026 · Published 1 July 2026',
+    url:'https://onlinelibrary.wiley.com/doi/10.1002/ail2.70036',
+    code:'https://github.com/MdSiamAnsary/Calorie-Prediction' },
+
+  { id:'J6', type:'journal', theme:'aitext', year:2026,
+    title:'A Multirepresentation Stacked Ensemble for AI-Generated Text Detection',
+    authors:[ME], venue:'International Journal of Intelligent Systems', publisher:'Wiley', vol:'2026', issue:'1',
+    doi:'10.1155/int/3992539', idx:['Q1','SCIE','DOAJ'],
+    dates:'Accepted 10 April 2026 · Published 26 May 2026',
+    url:'https://onlinelibrary.wiley.com/doi/10.1155/int/3992539', code:REPO },
+
+  { id:'J7', type:'journal', theme:'struct', year:2026,
+    title:'Transfer Learning With CLIP for Intelligent Concrete Crack Detection in Structural Health Monitoring',
+    authors:[ME], venue:'Shock and Vibration', publisher:'Wiley', vol:'2026', issue:'1',
+    doi:'10.1155/vib/4194403', idx:['Q3','SCIE','DOAJ'],
+    dates:'Accepted 29 January 2026 · Published 16 February 2026',
+    url:'https://onlinelibrary.wiley.com/doi/10.1155/vib/4194403', code:REPO },
+
+  { id:'J8', type:'journal', theme:'food', year:2026,
+    title:'Food Freshness Evaluation Using a CLIP-Based Architecture',
+    authors:[ME,'Amina Brinto','Shaila Sajnin Keya'], venue:'ENP Engineering Science Journal', publisher:'Ecole Nationale Polytechnique', vol:'5', issue:'2',
+    idx:['DOAJ'], dates:'Published 11 January 2026',
+    url:'https://enpesj.enp.edu.dz/index.php/enpesj/article/view/344', code:REPO },
+
+  { id:'J9', type:'journal', theme:'struct', year:2025,
+    title:'Structural Damage Detection in Civil Infrastructures',
+    authors:[ME,'Awaleen Nawar Suha'], venue:'European Journal of Electrical Engineering and Computer Science', publisher:'European Open Science', vol:'9', issue:'6',
+    idx:[], dates:'Published 7 November 2025',
+    url:'https://eu-opensci.org/index.php/ejece/article/view/19758', code:REPO },
+
+  { id:'J10', type:'journal', theme:'stock', year:2025,
+    title:'Prediction of Profitable Stock using Candlestick Patterns with ML',
+    authors:[ME], venue:'European Journal of Electrical Engineering and Computer Science', publisher:'European Open Science', vol:'9', issue:'5',
+    idx:[], dates:'Published 1 September 2025',
+    url:'http://ejece.org/index.php/ejece/article/view/738',
+    code:'https://github.com/MdSiamAnsary/Prediction-of-Profitable-Stock-using-Candlestick-Patterns' },
+
+  { id:'J11', type:'journal', theme:'cyber', year:2025,
+    title:'Machine Learning-based Detection of Spear Phishing Emails',
+    authors:[ME], venue:'International Journal of Computer Applications', publisher:'Foundation of Computer Science, NY', vol:'187', issue:'24',
+    idx:[], dates:'Published July 2025',
+    url:'https://www.ijcaonline.org/archives/volume187/number24/machine-learning-based-detection-of-spear-phishing-emails/', code:REPO },
+
+  { id:'J12', type:'journal', theme:'stock', year:2023,
+    title:'Machine Learning for Predicting the Stock Price Direction with Trading Indicators',
+    authors:[ME], venue:'ENP Engineering Science Journal', publisher:'Ecole Nationale Polytechnique', vol:'3', issue:'2',
+    idx:['DOAJ'], dates:'Published 31 December 2023',
+    url:'https://enpesj.enp.edu.dz/index.php/enpesj/article/view/178',
+    code:'https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators' },
+
+  { id:'J13', type:'journal', theme:'stock', year:2022,
+    title:'Breakout Stocks Identification using Machine Learning Approaches',
+    authors:[ME], venue:'ENP Engineering Science Journal', publisher:'Ecole Nationale Polytechnique', vol:'2', issue:'2',
+    idx:['DOAJ'], dates:'Published 28 December 2022',
+    url:'https://enpesj.enp.edu.dz/index.php/enpesj/article/view/173',
+    code:'https://github.com/MdSiamAnsary/Breakout-Stocks-Identification-using-ML' },
+
+  // ── CONFERENCES ──
+  { id:'C1', type:'conference', theme:'aitext', year:2026,
+    title:'Identifying AI Generated Scientific Abstracts using Quantum Machine Learning',
+    authors:[ME], venue:'International Conference on Intelligent Data Analysis and Applications (IDAA 2025)', short:'IDAA 2025',
+    publisher:'Atlantis Press (Springer Nature)', series:'Advances in Intelligent Systems Research',
+    held:'12–13 December 2025', dates:'Online 8 June 2026',
+    note:'Published as a chapter in the Advances in Intelligent Systems Research series.',
+    url:'https://www.atlantis-press.com/proceedings/idaa-25/126024889', code:REPO },
+
+  { id:'C2', type:'conference', theme:'aitext', year:2026,
+    title:'MISTY: Multidimensional Identification of Synthetic Text Yield',
+    authors:[ME], venue:'2025 IEEE International Conference on Signal Processing, Information, Communication and Systems (SPICSCON)', short:'IEEE SPICSCON 2025',
+    publisher:'IEEE', held:'21–22 November 2025', dates:'Online 11 May 2026',
+    url:'https://ieeexplore.ieee.org/abstract/document/11504262', code:REPO },
+
+  { id:'C3', type:'conference', theme:'aitext', year:2026,
+    title:'Stacking Ensemble Approach for AI Generated Text Detection with Appropriate Feature Selection',
+    authors:[ME], venue:'2025 IEEE 4th International Conference on Robotics, Automation, Artificial-Intelligence and Internet-of-Things (RAAICON)', short:'IEEE RAAICON 2025',
+    publisher:'IEEE', held:'27–28 November 2025', dates:'Online 7 May 2026',
+    url:'https://ieeexplore.ieee.org/document/11502163', code:REPO },
+
+  { id:'C4', type:'conference', theme:'food', year:2026,
+    title:'Calorie Estimation using Ensemble Technique from Recipes of Bangladeshi Foods',
+    authors:[ME,'Amina Brinto'], venue:'2025 IEEE 2nd International Conference on Computing, Applications and Systems (COMPAS)', short:'IEEE COMPAS 2025',
+    publisher:'IEEE', held:'23–24 October 2025', dates:'Online 12 February 2026',
+    url:'https://ieeexplore.ieee.org/document/11381855',
+    code:'https://github.com/MdSiamAnsary/Calorie-Prediction' },
+
+  { id:'C5', type:'conference', theme:'aitext', year:2025,
+    title:'Identification of AI Generated Texts Using an Ensemble Method',
+    authors:[ME,'Nawshin Tabassum Tanny'], venue:'2025 International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN)', short:'QPAIN 2025',
+    publisher:'IEEE', held:'31 July – 2 August 2025', dates:'Online 30 September 2025',
+    url:'https://ieeexplore.ieee.org/document/11171775', code:REPO },
+
+  { id:'C6', type:'conference', theme:'aitext', year:2025,
+    title:'A Novel Dataset for Identifying AI Generated Bengali Texts',
+    authors:[ME], venue:'2025 International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN)', short:'QPAIN 2025',
+    publisher:'IEEE', held:'31 July – 2 August 2025', dates:'Online 29 September 2025',
+    url:'https://ieeexplore.ieee.org/document/11171930', code:REPO },
+
+  { id:'C7', type:'conference', theme:'summ', year:2025,
+    title:'A Novel Dataset for Abstractive Summarization of Bengali Health Documents',
+    authors:[ME], venue:'2024 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON)', short:'IEEE BECITHCON 2024',
+    publisher:'IEEE', held:'28–29 November 2024', dates:'Online 17 April 2025',
+    url:'https://ieeexplore.ieee.org/document/10962590' },
+
+  { id:'C8', type:'conference', theme:'stock', year:2023,
+    title:'Prediction of Stock Price Direction with Trading Indicators using Machine Learning Techniques',
+    authors:[ME,'Amina Brinto'], venue:'2022 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE)', short:'IEEE WIECON-ECE 2022',
+    publisher:'IEEE', held:'30–31 December 2022', dates:'Online 19 June 2023',
+    url:'https://ieeexplore.ieee.org/document/10150983',
+    code:'https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators' },
+
+  { id:'C9', type:'conference', theme:'summ', year:2023,
+    title:'Newspaper Article Summarization Using Combinational Method',
+    authors:[ME], venue:'2023 International Conference on Power, Instrumentation, Control and Computing (PICC)', short:'PICC 2023',
+    publisher:'IEEE', held:'19–21 April 2023', dates:'Online 8 June 2023',
+    url:'https://ieeexplore.ieee.org/document/10142440',
+    code:'https://github.com/MdSiamAnsary/Newspaper-Article-Summarization-Using-Combinational-Method' },
+
+  { id:'C10', type:'conference', theme:'summ', year:2022,
+    title:'A Hybrid Approach for Extractive Summarization of Medical Documents',
+    authors:[ME], venue:'2021 IEEE International Conference on Biomedical Engineering, Computer and Information Technology for Health (BECITHCON)', short:'IEEE BECITHCON 2021',
+    publisher:'IEEE', held:'4–5 December 2021', dates:'Online 19 September 2022',
+    url:'https://ieeexplore.ieee.org/document/9893674' },
+
+  { id:'C11', type:'conference', theme:'summ', year:2021,
+    title:'A Hybrid Approach for Automatic Extractive Summarization',
+    authors:[ME], venue:'2021 International Conference on Information and Communication Technology for Sustainable Development (ICICT4SD)', short:'ICICT4SD 2021',
+    publisher:'IEEE', held:'27–28 February 2021', dates:'Online 12 April 2021',
+    url:'https://ieeexplore.ieee.org/document/9396855/' }
+];
+
+/* ════════════════════════════════════════════════════════════
+   RENDERING
+   ════════════════════════════════════════════════════════════ */
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function initials(name) {
+  const p = name.split(' ');
+  return p.slice(0, -1).map(x => x[0] + '.').join(' ') + ' ' + p[p.length - 1];
 }
-function switchTab(name, btn) {
-  document.querySelectorAll('.pub-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.pub-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  btn.classList.add('active');
+function joinAuthors(list) {
+  if (list.length === 1) return list[0];
+  if (list.length === 2) return list[0] + ' and ' + list[1];
+  return list.slice(0, -1).join(', ') + ', and ' + list[list.length - 1];
 }
+function ieee(p) {
+  const a = joinAuthors(p.authors.map(initials));
+  if (p.type === 'journal') {
+    let s = `${a}, "${p.title}," ${p.venue}`;
+    if (p.vol)   s += `, vol. ${p.vol}`;
+    if (p.issue) s += `, no. ${p.issue}`;
+    s += `, ${p.year}`;
+    if (p.doi)   s += `, doi: ${p.doi}`;
+    return s + '.';
+  }
+  let s = `${a}, "${p.title}," in Proc. ${p.venue}`;
+  if (p.series) s += `, ser. ${p.series}`;
+  return s + `, ${p.publisher}, ${p.year}.`;
+}
+function bibtex(p) {
+  const last = p.authors[0].split(' ').pop().toLowerCase();
+  const word = p.title.toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ')
+    .find(w => w.length > 3 && !['using','with','from','based','approach','novel'].includes(w)) || 'paper';
+  const auth = p.authors.map(n => { const s = n.split(' '); return s.pop() + ', ' + s.join(' '); }).join(' and ');
+  const f = [`  title     = {${p.title}}`, `  author    = {${auth}}`];
+  if (p.type === 'journal') {
+    f.push(`  journal   = {${p.venue}}`);
+    if (p.vol)   f.push(`  volume    = {${p.vol}}`);
+    if (p.issue) f.push(`  number    = {${p.issue}}`);
+  } else {
+    f.push(`  booktitle = {${p.venue}}`);
+    if (p.series) f.push(`  series    = {${p.series}}`);
+  }
+  f.push(`  publisher = {${p.publisher}}`, `  year      = {${p.year}}`);
+  if (p.doi) f.push(`  doi       = {${p.doi}}`);
+  f.push(`  url       = {${p.url}}`);
+  return `@${p.type === 'journal' ? 'article' : 'inproceedings'}{${last}${p.year}${word},\n${f.join(',\n')}\n}`;
+}
+
+function badge(i) {
+  if (i === 'Q1')        return `<span class="badge b-q1" title="Scopus quartile">Q1</span>`;
+  if (/^Q[2-4]$/.test(i)) return `<span class="badge b-q" title="Scopus quartile">${i}</span>`;
+  if (i === 'SCIE')      return `<span class="badge b-scie" title="Web of Science SCIE">SCIE</span>`;
+  if (i === 'DOAJ')      return `<span class="badge b-doaj" title="Directory of Open Access Journals">DOAJ</span>`;
+  return `<span class="badge b-year">${esc(i)}</span>`;
+}
+function authorHTML(n) {
+  if (n === ME) return `<span class="me">${esc(n)}</span>`;
+  if (PEOPLE[n]) return `<a href="${PEOPLE[n]}" target="_blank" rel="noopener">${esc(n)}</a>`;
+  return esc(n);
+}
+function venueHTML(p) {
+  if (p.type === 'journal') {
+    let s = `<em>${esc(p.venue)}</em>, ${esc(p.publisher)}`;
+    if (p.vol)   s += `, Vol. ${esc(p.vol)}`;
+    if (p.issue) s += `, Issue ${esc(p.issue)}`;
+    s += `, ${p.year}`;
+    if (p.doi)   s += ` · DOI: <a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${esc(p.doi)}</a>`;
+    return s;
+  }
+  return `<em>${esc(p.venue)}</em>, ${esc(p.publisher)} · ${esc(p.held)}`;
+}
+
+function itemHTML(p) {
+  const cid = 'cite-' + p.id;
+  return `
+  <article class="pub-item" data-id="${p.id}">
+    <span class="pub-num">${p.id}</span>
+    <div class="pub-body">
+      <div class="pub-meta">
+        <span class="badge b-type">${p.type === 'journal' ? 'Journal' : 'Conference'}</span>
+        <span class="badge b-year">${p.year}</span>
+        ${(p.idx || []).map(badge).join('')}
+      </div>
+      <h4 class="pub-title"><a href="${p.url}" target="_blank" rel="noopener">${esc(p.title)}</a></h4>
+      <p class="pub-authors">${p.authors.map(authorHTML).join(', ')}</p>
+      <p class="pub-venue">${venueHTML(p)}</p>
+      <p class="pub-dates">${esc(p.dates)}</p>
+      ${p.note ? `<p class="pub-note">${esc(p.note)}</p>` : ''}
+    </div>
+    <div class="pub-actions">
+      <a class="pub-btn btn-paper" href="${p.url}" target="_blank" rel="noopener">Paper ↗</a>
+      ${p.code ? `<a class="pub-btn btn-ghost" href="${p.code}" target="_blank" rel="noopener">Code ↗</a>` : ''}
+      <button class="pub-btn btn-ghost" type="button" aria-expanded="false" aria-controls="${cid}" data-cite="${p.id}">Cite</button>
+    </div>
+    <div class="cite-panel" id="${cid}">
+      <div class="cite-label">IEEE <button class="copy-btn" type="button" data-copy="${cid}-ieee">Copy</button></div>
+      <div class="cite-block plain" id="${cid}-ieee">${esc(ieee(p))}</div>
+      <div class="cite-label">BibTeX <button class="copy-btn" type="button" data-copy="${cid}-bib">Copy</button></div>
+      <div class="cite-block" id="${cid}-bib">${esc(bibtex(p))}</div>
+    </div>
+  </article>`;
+}
+
+const listHTML = arr => `<div class="pub-list">${arr.map(itemHTML).join('')}</div>`;
+const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
+
+function renderStats() {
+  const j = PUBS.filter(p => p.type === 'journal');
+  const scie = j.filter(p => p.idx.includes('SCIE')).length;
+  const solo = PUBS.filter(p => p.authors.length === 1).length;
+  const stats = [
+    [PUBS.length, 'Total Papers'],
+    [j.length, 'Journal Articles'],
+    [PUBS.length - j.length, 'Conference Papers'],
+    [scie, 'SCIE-Indexed'],
+    [solo, 'Sole-Authored']
+  ];
+  document.getElementById('pub-stats').innerHTML = stats
+    .map(([n, l]) => `<div class="pub-stat"><span class="pub-stat-num">${n}</span><span class="pub-stat-label">${l}</span></div>`).join('');
+}
+
+let state = { view: 'type', tab: 'journals', q: '' };
+
+function matches(p, q) {
+  if (!q) return true;
+  const hay = [p.id, p.title, p.venue, p.short, p.publisher, p.series, p.doi, p.year, p.authors.join(' '),
+               THEMES[p.theme].name, (p.idx || []).join(' ')].join(' ').toLowerCase();
+  return q.split(/\s+/).every(t => hay.includes(t));
+}
+
+function render() {
+  const q = state.q.trim().toLowerCase();
+  const hits = PUBS.filter(p => matches(p, q));
+  const root = document.getElementById('pub-root');
+  let html = '';
+
+  if (state.view === 'type') {
+    const J = hits.filter(p => p.type === 'journal'), C = hits.filter(p => p.type === 'conference');
+    if (q && state.tab === 'journals' && !J.length && C.length) state.tab = 'conferences';
+    if (q && state.tab === 'conferences' && !C.length && J.length) state.tab = 'journals';
+    html = `
+      <div class="pub-tabs" role="tablist">
+        <button class="pub-tab ${state.tab === 'journals' ? 'active' : ''}" data-tab="journals" role="tab">Journals <span class="pub-count">(${J.length})</span></button>
+        <button class="pub-tab ${state.tab === 'conferences' ? 'active' : ''}" data-tab="conferences" role="tab">Conferences <span class="pub-count">(${C.length})</span></button>
+      </div>
+      ${listHTML(state.tab === 'journals' ? J : C)}`;
+  }
+
+  if (state.view === 'theme') {
+    html = THEME_ORDER.map(k => {
+      const t = THEMES[k], arr = hits.filter(p => p.theme === k);
+      if (!arr.length) return '';
+      return `
+      <div class="group-block">
+        <div class="group-header">
+          <h3>${esc(t.name)}</h3><span class="group-count">${plural(arr.length, 'paper')}</span>
+          ${t.repo ? `<a class="group-repo" href="${t.repo}" target="_blank" rel="noopener">GitHub Repo ↗</a>` : ''}
+        </div>
+        <p class="group-desc">${esc(t.desc)}</p>
+        ${listHTML(arr)}
+      </div>`;
+    }).join('');
+  }
+
+  if (state.view === 'year') {
+    const years = [...new Set(hits.map(p => p.year))].sort((a, b) => b - a);
+    html = years.map(y => {
+      const arr = hits.filter(p => p.year === y);
+      return `
+      <div class="group-block">
+        <div class="group-header"><h3>${y}</h3><span class="group-count">${plural(arr.length, 'paper')}</span></div>
+        ${listHTML(arr)}
+      </div>`;
+    }).join('');
+  }
+
+  root.innerHTML = html;
+  document.getElementById('empty-msg').style.display = hits.length ? 'none' : 'block';
+  document.getElementById('pub-result-count').textContent =
+    q ? `${plural(hits.length, 'result')} for “${state.q.trim()}”` : '';
+}
+
+function setView(v) {
+  state.view = v;
+  document.querySelectorAll('.view-btn').forEach(b => {
+    const on = b.dataset.view === v;
+    b.classList.toggle('active', on); b.setAttribute('aria-selected', on);
+  });
+  history.replaceState(null, '', '#' + (v === 'type' ? state.tab : v));
+  render();
+}
+
+/* events */
+document.querySelector('.view-toggle').addEventListener('click', e => {
+  const b = e.target.closest('.view-btn'); if (b) setView(b.dataset.view);
+});
+document.getElementById('pub-search').addEventListener('input', e => { state.q = e.target.value; render(); });
+document.getElementById('pub-root').addEventListener('click', e => {
+  const tab = e.target.closest('.pub-tab');
+  if (tab) { state.tab = tab.dataset.tab; history.replaceState(null, '', '#' + state.tab); render(); return; }
+
+  const cite = e.target.closest('[data-cite]');
+  if (cite) {
+    const panel = document.getElementById('cite-' + cite.dataset.cite);
+    const open = panel.classList.toggle('open');
+    cite.setAttribute('aria-expanded', open);
+    return;
+  }
+  const copy = e.target.closest('[data-copy]');
+  if (copy) {
+    const text = document.getElementById(copy.dataset.copy).textContent;
+    const done = () => { copy.textContent = 'Copied'; setTimeout(() => copy.textContent = 'Copy', 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text, done));
+    else fallbackCopy(text, done);
+  }
+});
+function fallbackCopy(text, done) {
+  const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t);
+  t.select(); try { document.execCommand('copy'); done(); } catch (_) {} t.remove();
+}
+
+/* init — supports links like publications.html#conferences, #theme, #year */
+renderStats();
+const h = location.hash.slice(1);
+if (h === 'conferences' || h === 'journals') { state.tab = h; setView('type'); }
+else if (h === 'theme' || h === 'year') setView(h);
+else render();
 </script>
 </body>
 </html>
