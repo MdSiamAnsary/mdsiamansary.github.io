@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Hi! This is Ansary — Publications</title>
-<meta name="description" content="Publications of Md. Siam Ansary: 13 journal articles and 11 conference papers on AI-generated text detection, structural health monitoring, NLP, food informatics and stock market analysis."/>
+<meta name="description" content="Publications of Md. Siam Ansary: 14 journal articles and 11 conference papers on AI-generated text detection, structural health monitoring, NLP, food informatics and stock market analysis."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
@@ -157,7 +157,7 @@
 <div class="page-hero">
   <p class="page-hero-eyebrow fade-up d1">Research</p>
   <h1 class="fade-up d2"><em>Publications</em></h1>
-  <p class="fade-up d3">13 journal articles and 11 conference papers on AI-generated text detection, structural health monitoring, text summarization, food informatics and stock market analysis.</p>
+  <p class="fade-up d3">14 journal articles and 11 conference papers on AI-generated text detection, structural health monitoring, text summarization, food informatics and stock market analysis.</p>
 </div>
 
 <section class="section">
@@ -212,44 +212,53 @@ const THEMES = {
              desc: 'Calorie prediction from recipes and CLIP-based food freshness evaluation.' },
   stock:   { name: 'Stock Market Analysis',
              desc: 'Machine learning for price direction, breakout stocks and candlestick-pattern-based profitability.' },
+  emotion: { name: 'Emotional Vulnerability Detection',
+             desc: 'Transformer–ensemble NLP for detecting emotional vulnerability in cancer patient and caregiver narratives.' },
   heart:   { name: 'Heart Disease Detection',
              desc: 'A survey of machine learning, deep learning and explainable AI approaches.' },
   cyber:   { name: 'Cybersecurity',
              desc: 'Machine learning-based spear-phishing email detection.' }
 };
-const THEME_ORDER = ['aitext', 'struct', 'summ', 'food', 'stock', 'heart', 'cyber'];
+const THEME_ORDER = ['aitext', 'struct', 'summ', 'food', 'stock', 'emotion', 'heart', 'cyber'];
 
 const PUBS = [
   // ── JOURNALS ──
-  { id:'J1', type:'journal', theme:'aitext', year:2026,
+  { id:'J1', type:'journal', theme:'emotion', year:2026,
+    title:'Attention-guided hybrid transformer-ensemble framework for emotional vulnerability detection in cancer patient and caregiver narratives',
+    authors:[ME], venue:'Discover Informatics', publisher:'Springer Nature', vol:'1',
+    doi:'10.1007/s44564-026-00028-9', idx:[],
+    dates:'Accepted 8 October 2026 · Published 14 October 2026',
+    url:'https://link.springer.com/article/10.1007/s44564-026-00028-9' },
+
+  { id:'J2', type:'journal', theme:'aitext', year:2026,
     title:'Detection of Bangla AI-Generated Texts Using a Quantum Kernel Support Vector Machine',
     authors:[ME], venue:'Applied AI Letters', publisher:'Wiley', vol:'7', issue:'3',
     doi:'10.1002/ail2.70051', idx:['Q3','DOAJ'],
     dates:'Accepted 5 October 2026 · Published 12 October 2026',
     url:'https://onlinelibrary.wiley.com/doi/10.1002/ail2.70051' },
 
-  { id:'J2', type:'journal', theme:'heart', year:2026,
+  { id:'J3', type:'journal', theme:'heart', year:2026,
     title:'A comprehensive survey of machine and deep learning as well as explainable artificial intelligence approaches for heart disease detection',
     authors:[ME], venue:'Discover Informatics', publisher:'Springer Nature', vol:'1',
     doi:'10.1007/s44564-026-00019-w', idx:[],
     dates:'Accepted 15 September 2026 · Published 23 September 2026',
     url:'https://link.springer.com/article/10.1007/s44564-026-00019-w' },
 
-  { id:'J3', type:'journal', theme:'struct', year:2026,
+  { id:'J4', type:'journal', theme:'struct', year:2026,
     title:'A Comprehensive Survey on Concrete Crack Detection',
     authors:[ME], venue:'Shock and Vibration', publisher:'Wiley', vol:'2026', issue:'1',
     doi:'10.1155/vib/4950659', idx:['Q3','SCIE','DOAJ'],
     dates:'Accepted 25 July 2026 · Published 28 August 2026',
     url:'https://onlinelibrary.wiley.com/doi/10.1155/vib/4950659' },
 
-  { id:'J4', type:'journal', theme:'struct', year:2026,
+  { id:'J5', type:'journal', theme:'struct', year:2026,
     title:'Physics-Informed and Uncertainty-Aware Stacking Ensemble for Robust Prediction of Concrete Compressive Strength',
     authors:[ME], venue:'Shock and Vibration', publisher:'Wiley', vol:'2026', issue:'1',
     doi:'10.1155/vib/3817773', idx:['Q3','SCIE','DOAJ'],
     dates:'Accepted 26 June 2026 · Published 4 August 2026',
     url:'https://onlinelibrary.wiley.com/doi/10.1155/vib/3817773' },
 
-  { id:'J5', type:'journal', theme:'food', year:2026,
+  { id:'J6', type:'journal', theme:'food', year:2026,
     title:'Transformer-Based Contextual Modeling for Predicting Calories From Recipes',
     authors:[ME,'Amina Brinto'], venue:'Applied AI Letters', publisher:'Wiley', vol:'7', issue:'4',
     doi:'10.1002/ail2.70036', idx:['Q3','DOAJ'],
@@ -257,14 +266,14 @@ const PUBS = [
     url:'https://onlinelibrary.wiley.com/doi/10.1002/ail2.70036',
     code:'https://github.com/MdSiamAnsary/Calorie-Prediction' },
 
-  { id:'J6', type:'journal', theme:'aitext', year:2026,
+  { id:'J7', type:'journal', theme:'aitext', year:2026,
     title:'A Multirepresentation Stacked Ensemble for AI-Generated Text Detection',
     authors:[ME], venue:'International Journal of Intelligent Systems', publisher:'Wiley', vol:'2026', issue:'1',
     doi:'10.1155/int/3992539', idx:['Q1','SCIE','DOAJ'],
     dates:'Accepted 10 April 2026 · Published 26 May 2026',
     url:'https://onlinelibrary.wiley.com/doi/10.1155/int/3992539', code:REPO },
 
-  { id:'J7', type:'journal', theme:'struct', year:2026,
+  { id:'J8', type:'journal', theme:'struct', year:2026,
     title:'Transfer Learning With CLIP for Intelligent Concrete Crack Detection in Structural Health Monitoring',
     authors:[ME], venue:'Shock and Vibration', publisher:'Wiley', vol:'2026', issue:'1',
     doi:'10.1155/vib/4194403', idx:['Q3','SCIE','DOAJ'],
@@ -272,39 +281,39 @@ const PUBS = [
     note:'At the time of publication, the journal was Q2.',
     url:'https://onlinelibrary.wiley.com/doi/10.1155/vib/4194403', code:REPO },
 
-  { id:'J8', type:'journal', theme:'food', year:2026,
+  { id:'J9', type:'journal', theme:'food', year:2026,
     title:'Food Freshness Evaluation Using a CLIP-Based Architecture',
     authors:[ME,'Amina Brinto','Shaila Sajnin Keya'], venue:'ENP Engineering Science Journal', publisher:'Ecole Nationale Polytechnique', vol:'5', issue:'2',
     idx:['DOAJ'], dates:'Published 11 January 2026',
     url:'https://enpesj.enp.edu.dz/index.php/enpesj/article/view/344', code:REPO },
 
-  { id:'J9', type:'journal', theme:'struct', year:2025,
+  { id:'J10', type:'journal', theme:'struct', year:2025,
     title:'Structural Damage Detection in Civil Infrastructures',
     authors:[ME,'Awaleen Nawar Suha'], venue:'European Journal of Electrical Engineering and Computer Science', publisher:'European Open Science', vol:'9', issue:'6',
     idx:[], dates:'Published 7 November 2025',
     url:'https://eu-opensci.org/index.php/ejece/article/view/19758', code:REPO },
 
-  { id:'J10', type:'journal', theme:'stock', year:2025,
+  { id:'J11', type:'journal', theme:'stock', year:2025,
     title:'Prediction of Profitable Stock using Candlestick Patterns with ML',
     authors:[ME], venue:'European Journal of Electrical Engineering and Computer Science', publisher:'European Open Science', vol:'9', issue:'5',
     idx:[], dates:'Published 1 September 2025',
     url:'http://ejece.org/index.php/ejece/article/view/738',
     code:'https://github.com/MdSiamAnsary/Prediction-of-Profitable-Stock-using-Candlestick-Patterns' },
 
-  { id:'J11', type:'journal', theme:'cyber', year:2025,
+  { id:'J12', type:'journal', theme:'cyber', year:2025,
     title:'Machine Learning-based Detection of Spear Phishing Emails',
     authors:[ME], venue:'International Journal of Computer Applications', publisher:'Foundation of Computer Science, NY', vol:'187', issue:'24',
     idx:[], dates:'Published July 2025',
     url:'https://www.ijcaonline.org/archives/volume187/number24/machine-learning-based-detection-of-spear-phishing-emails/', code:REPO },
 
-  { id:'J12', type:'journal', theme:'stock', year:2023,
+  { id:'J13', type:'journal', theme:'stock', year:2023,
     title:'Machine Learning for Predicting the Stock Price Direction with Trading Indicators',
     authors:[ME], venue:'ENP Engineering Science Journal', publisher:'Ecole Nationale Polytechnique', vol:'3', issue:'2',
     idx:['DOAJ'], dates:'Published 31 December 2023',
     url:'https://enpesj.enp.edu.dz/index.php/enpesj/article/view/178',
     code:'https://github.com/MdSiamAnsary/Prediction-of-Stock-Price-Direction-with-Trading-Indicators' },
 
-  { id:'J13', type:'journal', theme:'stock', year:2022,
+  { id:'J14', type:'journal', theme:'stock', year:2022,
     title:'Breakout Stocks Identification using Machine Learning Approaches',
     authors:[ME], venue:'ENP Engineering Science Journal', publisher:'Ecole Nationale Polytechnique', vol:'2', issue:'2',
     idx:['DOAJ'], dates:'Published 28 December 2022',
